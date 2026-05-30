@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AmericanPro - Bots Personalizados para Discord</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #21C25E;
+            --primary-dark: #1a9f4d;
+            --bg-dark: #0f0f23;
+            --bg-darker: #0a0a1a;
+            --card-bg: #161628;
+            --text: #ffffff;
+            --text-secondary: #a0a0b0;
+            --border: #2a2a4a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: var(--bg-dark);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: var(--bg-darker);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .logo i {
+            font-size: 1.8rem;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            background: linear-gradient(135deg, var(--bg-darker) 0%, var(--bg-dark) 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://discord.com/assets/2c21a108533939b727a56b9572415252.svg') no-repeat center center;
+            opacity: 0.05;
+            background-size: 50%;
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--primary), #4ade80);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(33, 194, 94, 0.3);
+        }
+
+        .btn-discord {
+            background: #5865F2;
+        }
+
+        .btn-discord:hover {
+            background: #4752C4;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 5rem 5%;
+            text-align: center;
+            background: var(--bg-darker);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid var(--border);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+        }
+
+        /* Plans Section */
+        .plans {
+            padding: 5rem 5%;
+            text-align: center;
+        }
+
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+        }
+
+        .plan-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .plan-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary);
+        }
+
+        .plan-name {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .plan-period {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .plan-features li {
+            padding: 8px 0;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .plan-features li::before {
+            content: '✓';
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .plan-btn {
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 5%;
+            background: var(--bg-darker);
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-secondary);
+        }
+
+        .contact-item i {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-darker);
+            padding: 2rem 5%;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+        }
+
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav {
+                margin-top: 1rem;
+            }
+
+            nav a {
+                margin: 0 0.8rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 1rem;
+                margin-top: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <i class="fab fa-discord"></i>
+                <span>AmericanPro</span>
+            </div>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav class="nav-links">
+                <a href="#servicos">Serviços</a>
+                <a href="#planos">Planos</a>
+                <a href="#contato">Contato</a>
+                <a href="https://discord.gg/4apRHpBa" class="btn btn-discord" target="_blank">
+                    <i class="fab fa-discord"></i> Entrar no Servidor
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Bots Personalizados para Discord</h1>
+            <p>Desenvolvemos bots sob medida para o seu servidor Discord com hospedagem 24h, suporte especializado e soluções inovadoras.</p>
+            <a href="https://discord.gg/4apRHpBa" class="btn btn-discord" target="_blank">
+                <i class="fab fa-discord"></i> Contrate Agora no Discord
+            </a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="servicos">
+        <h2 class="section-title">Nossos Serviços</h2>
+        <p class="section-subtitle">Oferecemos soluções completas para o seu servidor Discord com qualidade e profissionalismo.</p>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h3>Bots Personalizados</h3>
+                <p>Criamos bots do zero de acordo com as suas necessidades, desde comandos simples até sistemas complexos de moderação e entretenimento.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-server"></i>
+                </div>
+                <h3>Hospedagem 24h</h3>
+                <p>Seu bot fica online o tempo todo com nossa hospedagem confiável e de alta performance, sem preocupações com quedas.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h3>Suporte Especializado</h3>
+                <p>Nossa equipe está pronta para te ajudar com qualquer dúvida ou problema, do desenvolvimento à implementação.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plans Section -->
+    <section class="plans" id="planos">
+        <h2 class="section-title">Nossos Planos</h2>
+        <p class="section-subtitle">Escolha o plano que melhor se adequa às suas necessidades. Todos incluem hospedagem 24h e suporte.</p>
+
+        <div class="plans-grid">
+            <div class="plan-card">
+                <h3 class="plan-name">Quinzenal</h3>
+                <div class="plan-price">R$15</div>
+                <div class="plan-period">por 15 dias</div>
+                <ul class="plan-features">
+                    <li>Bot personalizado</li>
+                    <li>Até 5 comandos</li>
+                    <li>Hospedagem 24h</li>
+                    <li>Suporte básico</li>
+                    <li>1 revisão por semana</li>
+                </ul>
+                <a href="https://discord.gg/4apRHpBa" class="btn" target="_blank">Contratar</a>
+            </div>
+
+            <div class="plan-card">
+                <h3 class="plan-name">Mensal</h3>
+                <div class="plan-price">R$25</div>
+                <div class="plan-period">por mês</div>
+                <ul class="plan-features">
+                    <li>Bot personalizado</li>
+                    <li>Até 15 comandos</li>
+                    <li>Hospedagem 24h</li>
+                    <li>Suporte prioritario</li>
+                    <li>2 revisões por semana</li>
+                    <li>Atualizações inclusas</li>
+                </ul>
+                <a href="https://discord.gg/4apRHpBa" class="btn" target="_blank">Contratar</a>
+            </div>
+
+            <div class="plan-card">
+                <h3 class="plan-name">Trimestral</h3>
+                <div class="plan-price">R$60</div>
+                <div class="plan-period">por 3 meses</div>
+                <ul class="plan-features">
+                    <li>Bot personalizado</li>
+                    <li>Comandos ilimitados</li>
+                    <li>Hospedagem 24h</li>
+                    <li>Suporte VIP</li>
+                    <li>Revisões diárias</li>
+                    <li>Atualizações inclusas</li>
+                    <li>1 sistema avançado</li>
+                </ul>
+                <a href="https://discord.gg/4apRHpBa" class="btn" target="_blank">Contratar</a>
+            </div>
+
+            <div class="plan-card">
+                <h3 class="plan-name">Anual</h3>
+                <div class="plan-price">R$160</div>
+                <div class="plan-period">por ano</div>
+                <ul class="plan-features">
+                    <li>Bot personalizado</li>
+                    <li>Comandos ilimitados</li>
+                    <li>Hospedagem 24h</li>
+                    <li>Suporte VIP 24/7</li>
+                    <li>Revisões diárias</li>
+                    <li>Atualizações inclusas</li>
+                    <li>3 sistemas avançados</li>
+                    <li>Prioridade máxima</li>
+                </ul>
+                <a href="https://discord.gg/4apRHpBa" class="btn" target="_blank">Contratar</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contato">
+        <h2 class="section-title">Entre em Contato</h2>
+        <p class="section-subtitle">Nosso horário de atendimento é das <strong style="color: var(--primary);">13h às 00h</strong> todos os dias.</p>
+
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fab fa-discord"></i>
+                <span>Servidor Discord: <a href="https://discord.gg/4apRHpBa" target="_blank" style="color: var(--primary);">discord.gg/4apRHpBa</a></span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-clock"></i>
+                <span>Atendimento: 13h - 00h (Todos os dias)</span>
+            </div>
+        </div>
+
+        <p style="margin-top: 2rem; color: var(--text-secondary);">Entre no nosso servidor Discord para tirar dúvidas, solicitar orçamentos ou contratar nossos serviços!</p>
+        <a href="https://discord.gg/4apRHpBa" class="btn btn-discord" target="_blank" style="margin-top: 1.5rem;">
+            <i class="fab fa-discord"></i> Entrar no Servidor Discord
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="https://discord.gg/4apRHpBa" target="_blank"><i class="fab fa-discord"></i></a>
+        </div>
+        <p class="copyright">© 2024 AmericanPro. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
