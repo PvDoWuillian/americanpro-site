@@ -1,1597 +1,443 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <!-- SEO Essencial -->
+  <title>AmericanPro | Bots Personalizados & Hospedagem Discord 24h</title>
+  <meta name="description" content="Desenvolvimento de bots Discord personalizados (moderação, tickets, economia, música) + Hospedagem 24h SSD NVMe Anti-DDoS. Orçamento grátis via Discord.">
+  <meta name="theme-color" content="#070b12">
+  <link rel="canonical" href="https://americanpro.com.br/"> <!-- Atualize com seu domínio real -->
+  
+  <!-- Open Graph (WhatsApp, Discord, LinkedIn) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="AmericanPro | Bots & Hospedagem Discord">
+  <meta property="og:description" content="Bots personalizados e hospedagem 24h com suporte humanizado. Planos a partir de R$15/mês.">
+  <meta property="og:image" content="/og-image.jpg">
+  <meta property="og:url" content="https://americanpro.com.br/">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AmericanPro | Bots & Hospedagem Discord">
+  <meta name="twitter:description" content="Bots personalizados e hospedagem 24h com suporte humanizado. Planos a partir de R$15/mês.">
+  <meta name="twitter:image" content="/og-image.jpg">
 
-<title>AmericanPro | Bots para Discord e Hospedagem 24h</title>
-<meta name="description" content="Bots personalizados para Discord, sistemas de moderação, tickets, economia, música, verificação, integrações e hospedagem 24h." />
-<meta name="theme-color" content="#070b12" />
+  <!-- Preconnect Fonts (Performance) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"></noscript>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- CSS Principal (Unique entry point) -->
+  <link rel="stylesheet" href="css/main.css">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
-<style>
-:root {
-  --bg: #070b12;
-  --card: #101722;
-  --card-2: #0c121d;
-  --text: #ffffff;
-  --muted: #b8c0cc;
-  --muted-2: #8290a3;
-  --primary: #21C25E;
-  --primary-2: #00ff99;
-  --discord: #5865F2;
-  --border: rgba(255,255,255,.09);
-  --shadow: 0 24px 80px rgba(0,0,0,.35);
-  --radius: 22px;
-  --container: 1180px;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 96px;
-}
-
-body {
-  font-family: 'Poppins', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
-  overflow-x: hidden;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(circle at 15% 10%, rgba(33,194,94,.16), transparent 30%),
-    radial-gradient(circle at 85% 20%, rgba(0,255,153,.09), transparent 25%),
-    linear-gradient(180deg, #070b12 0%, #080d16 55%, #060a11 100%);
-}
-
-body.menu-open {
-  overflow: hidden;
-}
-
-::selection {
-  background: rgba(33,194,94,.35);
-}
-
-img {
-  display: block;
-  max-width: 100%;
-}
-
-a {
-  color: inherit;
-}
-
-button {
-  font-family: inherit;
-}
-
-main,
-.footer {
-  position: relative;
-  z-index: 1;
-}
-
-.bg-blur {
-  position: fixed;
-  border-radius: 50%;
-  filter: blur(120px);
-  z-index: 0;
-  opacity: .22;
-  pointer-events: none;
-}
-
-.blur1 {
-  width: 420px;
-  height: 420px;
-  background: var(--primary);
-  top: -130px;
-  left: -120px;
-}
-
-.blur2 {
-  width: 360px;
-  height: 360px;
-  background: var(--primary-2);
-  right: -130px;
-  top: 260px;
-}
-
-.container {
-  width: min(var(--container), calc(100% - 40px));
-  margin-inline: auto;
-}
-
-.section {
-  padding: 96px 0;
-}
-
-.section-alt {
-  background: linear-gradient(180deg, transparent, rgba(255,255,255,.02), transparent);
-}
-
-.section-header {
-  max-width: 760px;
-  margin: 0 auto 42px;
-  text-align: center;
-}
-
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 12px;
-  padding: 8px 14px;
-  border: 1px solid rgba(33,194,94,.35);
-  border-radius: 999px;
-  color: #caffdf;
-  background: rgba(33,194,94,.08);
-  font-size: .85rem;
-  font-weight: 700;
-}
-
-.section-title {
-  font-size: clamp(2rem, 4vw, 2.8rem);
-  line-height: 1.15;
-  letter-spacing: -0.04em;
-  margin-bottom: 12px;
-}
-
-.section-title span {
-  color: var(--primary);
-}
-
-.section-subtitle {
-  color: var(--muted);
-  font-size: 1rem;
-}
-
-/* Header */
-
-.site-header {
-  position: fixed;
-  inset: 0 0 auto 0;
-  z-index: 1000;
-  background: rgba(7,11,18,.78);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border-bottom: 1px solid var(--border);
-}
-
-.header-inner {
-  min-height: 82px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  text-decoration: none;
-  color: var(--primary);
-  font-weight: 800;
-  font-size: 1.35rem;
-  letter-spacing: -0.02em;
-}
-
-.logo img {
-  width: 48px;
-  height: 48px;
-  object-fit: cover;
-  border-radius: 14px;
-  border: 1px solid var(--border);
-  box-shadow: 0 0 30px rgba(33,194,94,.18);
-}
-
-.nav {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
-
-.nav a {
-  color: var(--muted);
-  text-decoration: none;
-  font-weight: 600;
-  font-size: .95rem;
-  transition: .25s;
-}
-
-.nav a:hover {
-  color: var(--primary);
-}
-
-.nav-cta {
-  display: none;
-}
-
-.header-cta {
-  white-space: nowrap;
-  text-decoration: none;
-  color: #fff;
-  font-weight: 800;
-  padding: 12px 18px;
-  border-radius: 14px;
-  background: linear-gradient(135deg, var(--primary), #159447);
-  box-shadow: 0 12px 34px rgba(33,194,94,.22);
-  border: 1px solid rgba(255,255,255,.1);
-  transition: .25s;
-}
-
-.header-cta:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 16px 42px rgba(33,194,94,.32);
-}
-
-.menu-toggle {
-  display: none;
-  width: 44px;
-  height: 44px;
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  background: rgba(255,255,255,.04);
-  color: #fff;
-  cursor: pointer;
-}
-
-.menu-toggle span {
-  display: block;
-  width: 18px;
-  height: 2px;
-  border-radius: 999px;
-  background: currentColor;
-  transition: .25s;
-}
-
-.menu-toggle.active span:nth-child(1) {
-  transform: translateY(6px) rotate(45deg);
-}
-
-.menu-toggle.active span:nth-child(2) {
-  opacity: 0;
-}
-
-.menu-toggle.active span:nth-child(3) {
-  transform: translateY(-6px) rotate(-45deg);
-}
-
-/* Hero */
-
-.hero {
-  min-height: 100svh;
-  padding: 135px 0 80px;
-  display: flex;
-  align-items: center;
-}
-
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1.05fr .95fr;
-  align-items: center;
-  gap: 60px;
-}
-
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 20px;
-  padding: 10px 16px;
-  border: 1px solid rgba(33,194,94,.45);
-  border-radius: 999px;
-  background: rgba(33,194,94,.08);
-  color: #caffdf;
-  font-weight: 700;
-  font-size: .92rem;
-}
-
-.hero h1 {
-  font-size: clamp(2.5rem, 6vw, 4.7rem);
-  line-height: 1.05;
-  letter-spacing: -0.06em;
-  margin-bottom: 20px;
-}
-
-.hero h1 span {
-  color: var(--primary);
-  text-shadow: 0 0 35px rgba(33,194,94,.25);
-}
-
-.hero p {
-  max-width: 660px;
-  color: var(--muted);
-  font-size: 1.08rem;
-  margin-bottom: 30px;
-}
-
-.hero-actions {
-  display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
-}
-
-.btn {
-  min-height: 50px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 14px 22px;
-  border-radius: 14px;
-  font-weight: 800;
-  text-decoration: none;
-  transition: .25s;
-}
-
-.btn:hover {
-  transform: translateY(-3px);
-}
-
-.btn-primary {
-  color: #fff;
-  background: linear-gradient(135deg, var(--primary), #159447);
-  box-shadow: 0 16px 42px rgba(33,194,94,.25);
-}
-
-.btn-secondary {
-  color: #caffdf;
-  border: 1px solid rgba(33,194,94,.45);
-  background: rgba(33,194,94,.07);
-}
-
-.trust-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 26px;
-}
-
-.trust-pill {
-  padding: 9px 12px;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  background: rgba(255,255,255,.04);
-  color: var(--muted);
-  font-size: .88rem;
-  font-weight: 600;
-}
-
-.hero-visual {
-  position: relative;
-  min-height: 430px;
-  display: grid;
-  place-items: center;
-}
-
-.hero-image-wrap {
-  width: min(100%, 480px);
-  position: relative;
-  padding: 16px;
-  border-radius: 32px;
-  background:
-    linear-gradient(145deg, rgba(33,194,94,.35), rgba(255,255,255,.04)),
-    rgba(255,255,255,.03);
-  border: 1px solid rgba(255,255,255,.1);
-  box-shadow: 0 0 70px rgba(33,194,94,.2);
-  animation: float 5s ease-in-out infinite;
-}
-
-.hero-image-wrap img {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  border-radius: 24px;
-  border: 1px solid rgba(255,255,255,.1);
-}
-
-.mini-card {
-  position: absolute;
-  display: grid;
-  line-height: 1.2;
-  padding: 14px 16px;
-  border-radius: 18px;
-  background: rgba(16,23,34,.84);
-  border: 1px solid var(--border);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  box-shadow: var(--shadow);
-}
-
-.mini-card strong {
-  color: var(--primary);
-  font-size: 1.2rem;
-}
-
-.mini-card span {
-  color: var(--muted);
-  font-size: .85rem;
-}
-
-.mini-card-1 {
-  top: 42px;
-  left: 0;
-}
-
-.mini-card-2 {
-  right: 0;
-  bottom: 54px;
-}
-
-@keyframes float {
-  50% {
-    transform: translateY(-14px);
+  <!-- JSON-LD Schema.org (SEO Rico) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "AmericanPro",
+    "url": "https://americanpro.com.br/",
+    "logo": "https://americanpro.com.br/logo.png",
+    "description": "Desenvolvimento de bots Discord personalizados e hospedagem 24h.",
+    "areaServed": "BR",
+    "priceRange": "R$ 15 - R$ 80",
+    "currenciesAccepted": "BRL",
+    "paymentAccepted": "PIX, Cartão, Cripto",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "availableLanguage": "Portuguese",
+      "url": "https://discord.gg/4apRHpBa"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Planos de Hospedagem",
+      "itemListElement": [
+        {"@type": "Offer", "name": "Bronze", "price": "15.00", "priceCurrency": "BRL", "description": "1GB RAM, 1 vCPU"},
+        {"@type": "Offer", "name": "Prata", "price": "25.00", "priceCurrency": "BRL", "description": "2GB RAM, 2 vCPUs"},
+        {"@type": "Offer", "name": "Ouro", "price": "45.00", "priceCurrency": "BRL", "description": "4GB RAM, 4 vCPUs, Suporte Prioritário"},
+        {"@type": "Offer", "name": "Platina", "price": "80.00", "priceCurrency": "BRL", "description": "8GB RAM, 8 vCPUs, Suporte VIP 24/7"}
+      ]
+    }
   }
-}
-
-/* Stats */
-
-.stats {
-  padding: 0 0 55px;
-}
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-}
-
-.stat {
-  padding: 26px;
-  border-radius: 22px;
-  text-align: center;
-  background: linear-gradient(180deg, rgba(16,23,34,.92), rgba(12,18,29,.92));
-  border: 1px solid var(--border);
-  box-shadow: 0 18px 60px rgba(0,0,0,.22);
-}
-
-.stat h2 {
-  color: var(--primary);
-  font-size: clamp(1.7rem, 3vw, 2.3rem);
-  line-height: 1;
-  margin-bottom: 8px;
-}
-
-.stat p {
-  color: var(--muted);
-  font-size: .94rem;
-}
-
-/* Cards */
-
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
-}
-
-.service-card,
-.benefit-card,
-.plan-card,
-.faq-item,
-.contact-card {
-  background: linear-gradient(180deg, rgba(16,23,34,.95), rgba(12,18,29,.95));
-  border: 1px solid var(--border);
-  box-shadow: 0 18px 60px rgba(0,0,0,.22);
-}
-
-.service-card {
-  position: relative;
-  overflow: hidden;
-  padding: 26px;
-  border-radius: var(--radius);
-  transition: .3s;
-}
-
-.service-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(33,194,94,.18), transparent 45%);
-  opacity: 0;
-  transition: .3s;
-}
-
-.service-card:hover {
-  transform: translateY(-7px);
-  border-color: rgba(33,194,94,.38);
-}
-
-.service-card:hover::before {
-  opacity: 1;
-}
-
-.service-card > * {
-  position: relative;
-  z-index: 1;
-}
-
-.card-icon {
-  width: 48px;
-  height: 48px;
-  display: grid;
-  place-items: center;
-  margin-bottom: 16px;
-  border-radius: 16px;
-  background: rgba(33,194,94,.1);
-  color: var(--primary);
-  font-size: 1.35rem;
-}
-
-.service-card h3 {
-  font-size: 1.05rem;
-  margin-bottom: 8px;
-}
-
-.service-card p {
-  color: var(--muted);
-  font-size: .93rem;
-}
-
-/* Benefícios */
-
-.benefits-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-}
-
-.benefit-card {
-  padding: 26px;
-  border-radius: var(--radius);
-}
-
-.benefit-card strong {
-  display: block;
-  margin-bottom: 8px;
-  font-size: 1.08rem;
-}
-
-.benefit-card p {
-  color: var(--muted);
-  font-size: .94rem;
-}
-
-/* Planos */
-
-.pricing-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  align-items: stretch;
-}
-
-.plan-card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  padding: 26px;
-  border-radius: 24px;
-  transition: .3s;
-}
-
-.plan-card:hover {
-  transform: translateY(-8px);
-  border-color: rgba(33,194,94,.38);
-}
-
-.plan-card.featured {
-  border-color: rgba(33,194,94,.7);
-  box-shadow:
-    0 0 0 1px rgba(33,194,94,.18),
-    0 30px 90px rgba(33,194,94,.12);
-}
-
-.plan-card.featured::before {
-  content: "";
-  position: absolute;
-  inset: -1px;
-  z-index: 0;
-  pointer-events: none;
-  background: radial-gradient(circle at top, rgba(33,194,94,.22), transparent 55%);
-}
-
-.plan-card > * {
-  position: relative;
-  z-index: 1;
-}
-
-.popular-badge {
-  align-self: flex-start;
-  margin-bottom: 14px;
-  padding: 7px 11px;
-  border-radius: 999px;
-  color: #06100a;
-  background: var(--primary);
-  font-weight: 900;
-  font-size: .75rem;
-}
-
-.plan-name {
-  color: #fff;
-  font-size: 1.35rem;
-  margin-bottom: 6px;
-}
-
-.ram {
-  color: var(--primary);
-  font-weight: 800;
-  margin-bottom: 18px;
-}
-
-.features {
-  list-style: none;
-  display: grid;
-  gap: 10px;
-  margin-bottom: 22px;
-}
-
-.features li {
-  color: var(--muted);
-  font-size: .92rem;
-  padding-bottom: 10px;
-  border-bottom: 1px solid rgba(255,255,255,.06);
-}
-
-.price {
-  margin-top: auto;
-  margin-bottom: 16px;
-  font-size: 1.55rem;
-  font-weight: 900;
-  letter-spacing: -0.03em;
-}
-
-.price span {
-  color: var(--muted-2);
-  font-size: .9rem;
-  font-weight: 600;
-}
-
-.buy-btn {
-  width: 100%;
-  min-height: 46px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  border-radius: 14px;
-  color: #fff;
-  font-weight: 900;
-  background: linear-gradient(135deg, var(--primary), #159447);
-  box-shadow: 0 16px 42px rgba(33,194,94,.2);
-  transition: .25s;
-}
-
-.buy-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 18px 48px rgba(33,194,94,.3);
-}
-
-.plan-card:not(.featured) .buy-btn {
-  color: #d8ffe7;
-  background: rgba(33,194,94,.12);
-  border: 1px solid rgba(33,194,94,.38);
-  box-shadow: none;
-}
-
-.plan-card:not(.featured) .buy-btn:hover {
-  color: #fff;
-  background: var(--primary);
-}
-
-.plans-note {
-  max-width: 760px;
-  margin: 28px auto 0;
-  text-align: center;
-  color: var(--muted);
-  font-size: .93rem;
-}
-
-/* FAQ */
-
-.faq-list {
-  max-width: 850px;
-  margin: 0 auto;
-  display: grid;
-  gap: 14px;
-}
-
-.faq-item {
-  overflow: hidden;
-  border-radius: 18px;
-}
-
-.faq-question {
-  width: 100%;
-  padding: 20px 22px;
-  border: none;
-  background: transparent;
-  color: #fff;
-  cursor: pointer;
-  text-align: left;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-  font-size: 1rem;
-  font-weight: 800;
-}
-
-.faq-icon {
-  width: 30px;
-  height: 30px;
-  flex: 0 0 30px;
-  display: grid;
-  place-items: center;
-  border-radius: 10px;
-  color: var(--primary);
-  background: rgba(33,194,94,.11);
-  font-size: 1.25rem;
-  transition: .25s;
-}
-
-.faq-item.active {
-  border-color: rgba(33,194,94,.42);
-}
-
-.faq-item.active .faq-icon {
-  transform: rotate(45deg);
-  color: #fff;
-  background: var(--primary);
-}
-
-.faq-answer {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height .35s ease;
-}
-
-.faq-answer p {
-  padding: 0 22px 22px;
-  color: var(--muted);
-}
-
-/* Contato */
-
-.contact-card {
-  max-width: 820px;
-  margin: 0 auto;
-  position: relative;
-  overflow: hidden;
-  text-align: center;
-  padding: clamp(28px, 5vw, 52px);
-  border-radius: 28px;
-}
-
-.contact-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at top, rgba(33,194,94,.18), transparent 55%);
-  pointer-events: none;
-}
-
-.contact-card > * {
-  position: relative;
-  z-index: 1;
-}
-
-.contact-card h3 {
-  color: var(--primary);
-  font-size: clamp(1.8rem, 4vw, 2.4rem);
-  margin-bottom: 10px;
-}
-
-.contact-card p {
-  color: var(--muted);
-  margin-bottom: 24px;
-}
-
-.contact-actions {
-  display: flex;
-  justify-content: center;
-  gap: 14px;
-  flex-wrap: wrap;
-}
-
-/* Footer */
-
-.footer {
-  padding: 36px 20px;
-  text-align: center;
-  color: var(--muted-2);
-  border-top: 1px solid rgba(255,255,255,.06);
-}
-
-/* Botão flutuante */
-
-.discord-float {
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-  z-index: 999;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  text-decoration: none;
-  color: #fff;
-  font-weight: 900;
-  padding: 14px 18px;
-  border-radius: 999px;
-  background: var(--discord);
-  box-shadow: 0 18px 50px rgba(88,101,242,.35);
-  transition: .25s;
-}
-
-.discord-float:hover {
-  transform: translateY(-3px);
-}
-
-/* Animações */
-
-.reveal {
-  opacity: 1;
-  transform: none;
-}
-
-body.animations-ready .reveal {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity .65s ease, transform .65s ease;
-}
-
-body.animations-ready .reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Responsivo */
-
-@media (max-width: 1100px) {
-  .hero-grid {
-    grid-template-columns: 1fr .85fr;
-    gap: 36px;
-  }
-
-  .services-grid,
-  .pricing-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .benefits-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 920px) {
-  html {
-    scroll-padding-top: 86px;
-  }
-
-  .container {
-    width: min(var(--container), calc(100% - 32px));
-  }
-
-  .header-inner {
-    min-height: 74px;
-  }
-
-  .logo {
-    font-size: 1.18rem;
-  }
-
-  .logo img {
-    width: 44px;
-    height: 44px;
-  }
-
-  .header-cta {
-    display: none;
-  }
-
-  .menu-toggle {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-  }
-
-  .nav {
-    position: fixed;
-    top: 84px;
-    left: 16px;
-    right: 16px;
-    display: grid;
-    gap: 6px;
-    padding: 14px;
-    border-radius: 20px;
-    background: rgba(10,15,25,.96);
-    border: 1px solid var(--border);
-    box-shadow: var(--shadow);
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transform: translateY(-10px);
-    transition: .25s;
-  }
-
-  .nav.open {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transform: translateY(0);
-  }
-
-  .nav a {
-    padding: 12px 14px;
-    border-radius: 12px;
-  }
-
-  .nav a:hover {
-    background: rgba(33,194,94,.08);
-  }
-
-  .nav-cta {
-    display: block;
-    text-align: center;
-    color: #fff !important;
-    background: linear-gradient(135deg, var(--primary), #159447);
-    margin-top: 4px;
-  }
-
-  .hero {
-    min-height: auto;
-    padding: 112px 0 54px;
-  }
-
-  .hero-grid {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
-  .hero p {
-    margin-inline: auto;
-  }
-
-  .hero-actions,
-  .trust-row {
-    justify-content: center;
-  }
-
-  .hero-visual {
-    min-height: auto;
-  }
-
-  .hero-image-wrap {
-    width: min(440px, 100%);
-  }
-
-  .mini-card {
-    display: none;
-  }
-
-  .stats-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .section {
-    padding: 74px 0;
-  }
-}
-
-@media (max-width: 640px) {
-  .container {
-    width: min(var(--container), calc(100% - 28px));
-  }
-
-  .hero h1 {
-    font-size: clamp(2.25rem, 11vw, 3.1rem);
-  }
-
-  .hero-actions {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .btn {
-    width: 100%;
-  }
-
-  .trust-row {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-
-  .stats-grid,
-  .services-grid,
-  .benefits-grid,
-  .pricing-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .stat {
-    padding: 22px;
-  }
-
-  .contact-actions {
-    flex-direction: column;
-  }
-
-  .discord-float {
-    right: 14px;
-    bottom: 14px;
-    padding: 12px 14px;
-    font-size: .9rem;
-  }
-
-  .footer {
-    padding-bottom: 78px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  *,
-  *::before,
-  *::after {
-    animation: none !important;
-    transition: none !important;
-  }
-
-  body.animations-ready .reveal {
-    opacity: 1;
-    transform: none;
-  }
-}
-</style>
+  </script>
 </head>
-
 <body>
-<div class="bg-blur blur1"></div>
-<div class="bg-blur blur2"></div>
-
-<header class="site-header">
-  <div class="container header-inner">
-    <a href="#inicio" class="logo" aria-label="AmericanPro - início">
-      <img src="https://i.postimg.cc/7LhfFNQ4/baner.png" alt="Logo AmericanPro" width="48" height="48">
-      <span>AmericanPro</span>
-    </a>
-
-    <nav id="menu" class="nav" aria-label="Menu principal">
-      <a href="#servicos">Serviços</a>
-      <a href="#beneficios">Benefícios</a>
-      <a href="#planos">Planos</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contato">Contato</a>
-      <a class="nav-cta" href="https://discord.gg/4apRHpBa" target="_blank" rel="noopener noreferrer">Entrar no Discord</a>
-    </nav>
-
-    <a class="header-cta" href="https://discord.gg/4apRHpBa" target="_blank" rel="noopener noreferrer">Entrar no Discord</a>
-
-    <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+  <!-- Background Effects (Canvas/WebGL viria aqui, mantendo CSS simples por enquanto) -->
+  <div class="bg-blobs" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
   </div>
-</header>
 
-<main>
-  <section id="inicio" class="hero">
-    <div class="container hero-grid">
-      <div class="hero-content">
-        <span class="badge">🚀 Bots personalizados + hospedagem 24h</span>
+  <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
 
-        <h1>A solução completa para seu servidor <span>Discord</span>.</h1>
+  <header class="header" role="banner">
+    <div class="container header-inner">
+      <a href="/" class="logo" aria-label="AmericanPro - Início">
+        <!-- SVG Inline é melhor performance/cache que img externo -->
+        <svg class="logo-icon" viewBox="0 0 55 55" aria-hidden="true"><use href="#logo-icon"></use></svg>
+        <span class="logo-text">AmericanPro</span>
+      </a>
 
-        <p>
-          Criamos bots personalizados com sistemas de moderação, tickets, economia,
-          música, verificação e integrações exclusivas. Tudo com hospedagem estável
-          para manter seu projeto online.
-        </p>
+      <nav class="nav" role="navigation" aria-label="Navegação principal" id="main-nav">
+        <ul class="nav-list">
+          <li><a href="#servicos" class="nav-link">Serviços</a></li>
+          <li><a href="#planos" class="nav-link">Planos</a></li>
+          <li><a href="#faq" class="nav-link">FAQ</a></li>
+          <li><a href="#contato" class="nav-link">Contato</a></li>
+        </ul>
+      </nav>
 
-        <div class="hero-actions">
-          <a href="https://discord.gg/4apRHpBa" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-            Solicitar orçamento
-          </a>
-          <a href="#planos" class="btn btn-secondary">
-            Ver planos
-          </a>
-        </div>
-
-        <div class="trust-row" aria-label="Diferenciais">
-          <span class="trust-pill">✅ Hospedagem 24h</span>
-          <span class="trust-pill">⚡ Planos escaláveis</span>
-          <span class="trust-pill">🛠️ Desenvolvimento sob medida</span>
-        </div>
-      </div>
-
-      <div class="hero-visual">
-        <div class="hero-image-wrap">
-          <img src="https://i.postimg.cc/7LhfFNQ4/baner.png" alt="Banner AmericanPro" fetchpriority="high">
-        </div>
-
-        <div class="mini-card mini-card-1">
-          <strong>24h</strong>
-          <span>online</span>
-        </div>
-
-        <div class="mini-card mini-card-2">
-          <strong>Suporte</strong>
-          <span>via Discord</span>
-        </div>
+      <div class="header-actions">
+        <a href="https://discord.gg/4apRHpBa" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-discord" aria-label="Entrar no Discord da AmericanPro">
+          <svg class="icon" aria-hidden="true"><use href="#discord-icon"></use></svg>
+          <span>Discord</span>
+        </a>
+        <button class="hamburger" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menu" id="hamburger-btn">
+          <span class="hamburger-box" aria-hidden="true"><span class="hamburger-inner"></span></span>
+        </button>
       </div>
     </div>
-  </section>
+  </header>
 
-  <section class="stats" aria-label="Estatísticas da AmericanPro">
-    <div class="container stats-grid">
-      <article class="stat reveal">
-        <h2><span class="counter" data-target="500" data-suffix="+">0</span></h2>
-        <p>Horas online</p>
-      </article>
-
-      <article class="stat reveal">
-        <h2><span class="counter" data-target="100" data-suffix="+">0</span></h2>
-        <p>Projetos personalizados</p>
-      </article>
-
-      <article class="stat reveal">
-        <h2><span class="counter" data-target="24" data-suffix="h">0</span></h2>
-        <p>Hospedagem</p>
-      </article>
-
-      <article class="stat reveal">
-        <h2>13h–00h</h2>
-        <p>Atendimento</p>
-      </article>
-    </div>
-  </section>
-
-  <section id="servicos" class="section">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="eyebrow">🧩 Serviços</span>
-        <h2 class="section-title">Nossos <span>serviços</span></h2>
-        <p class="section-subtitle">
-          Soluções para automatizar, proteger e profissionalizar sua comunidade no Discord.
-        </p>
-      </div>
-
-      <div class="services-grid">
-        <article class="service-card reveal">
-          <div class="card-icon">🤖</div>
-          <h3>Bots personalizados</h3>
-          <p>Desenvolvimento completo conforme a necessidade do seu servidor.</p>
-        </article>
-
-        <article class="service-card reveal">
-          <div class="card-icon">🛡️</div>
-          <h3>Moderação</h3>
-          <p>Sistemas automáticos para proteger sua comunidade contra abusos.</p>
-        </article>
-
-        <article class="service-card reveal">
-          <div class="card-icon">🎫</div>
-          <h3>Tickets</h3>
-          <p>Atendimento profissional com categorias, logs e painéis personalizados.</p>
-        </article>
-
-        <article class="service-card reveal">
-          <div class="card-icon">💰</div>
-          <h3>Economia</h3>
-          <p>Moedas, rankings, recompensas, lojas e sistemas interativos.</p>
-        </article>
-
-        <article class="service-card reveal">
-          <div class="card-icon">🎵</div>
-          <h3>Música</h3>
-          <p>Entretenimento para sua comunidade com comandos práticos.</p>
-        </article>
-
-        <article class="service-card reveal">
-          <div class="card-icon">✅</div>
-          <h3>Verificação</h3>
-          <p>Controle de acesso, proteção contra raids e entrada mais segura.</p>
-        </article>
-
-        <article class="service-card reveal">
-          <div class="card-icon">🔗</div>
-          <h3>Integrações</h3>
-          <p>Conexão com APIs, sites, bancos de dados e sistemas externos.</p>
-        </article>
-
-        <article class="service-card reveal">
-          <div class="card-icon">☁️</div>
-          <h3>Hospedagem 24h</h3>
-          <p>Infraestrutura para manter seu bot funcionando continuamente.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section id="beneficios" class="section section-alt">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="eyebrow">⭐ Diferenciais</span>
-        <h2 class="section-title">Por que escolher a <span>AmericanPro?</span></h2>
-        <p class="section-subtitle">
-          Nosso foco é entregar soluções funcionais, bonitas e adaptadas ao seu projeto.
-        </p>
-      </div>
-
-      <div class="benefits-grid">
-        <article class="benefit-card reveal">
-          <strong>Entrega sob medida</strong>
-          <p>Cada bot pode ser adaptado ao estilo, regras e necessidades do seu servidor.</p>
-        </article>
-
-        <article class="benefit-card reveal">
-          <strong>Hospedagem estável</strong>
-          <p>Planos pensados para manter bots online com boa performance.</p>
-        </article>
-
-        <article class="benefit-card reveal">
-          <strong>Suporte pelo Discord</strong>
-          <p>Atendimento direto para dúvidas, ajustes e solicitações.</p>
-        </article>
-
-        <article class="benefit-card reveal">
-          <strong>Design profissional</strong>
-          <p>Comandos, mensagens, embeds e painéis com aparência mais organizada.</p>
-        </article>
-
-        <article class="benefit-card reveal">
-          <strong>Segurança</strong>
-          <p>Sistemas de moderação, verificação, logs e proteção para sua comunidade.</p>
-        </article>
-
-        <article class="benefit-card reveal">
-          <strong>Planos escaláveis</strong>
-          <p>Você pode começar com um plano menor e evoluir conforme o projeto cresce.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section id="planos" class="section">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="eyebrow">💎 Hospedagem</span>
-        <h2 class="section-title">Planos de <span>hospedagem</span></h2>
-        <p class="section-subtitle">
-          Escolha o plano ideal para manter seu bot online 24 horas por dia.
-        </p>
-      </div>
-
-      <div class="pricing-grid">
-        <article class="plan-card reveal">
-          <h3 class="plan-name">Bronze</h3>
-          <div class="ram">1 GB RAM</div>
-
-          <ul class="features">
-            <li>✅ 1 vCPU</li>
-            <li>✅ SSD NVMe</li>
-            <li>✅ Proteção Anti-DDoS</li>
-            <li>✅ Ideal para bots simples</li>
-          </ul>
-
-          <div class="price">R$ 15,00<span>/mês</span></div>
-
-          <a href="https://discord.gg/4apRHpBa" target="_blank" rel="noopener noreferrer" class="buy-btn" aria-label="Contratar plano Bronze no Discord">
-            Contratar
-          </a>
-        </article>
-
-        <article class="plan-card reveal">
-          <h3 class="plan-name">Prata</h3>
-          <div class="ram">2 GB RAM</div>
-
-          <ul class="features">
-            <li>✅ 2 vCPUs</li>
-            <li>✅ SSD NVMe</li>
-            <li>✅ Proteção Anti-DDoS</li>
-            <li>✅ Ideal para bots médios</li>
-          </ul>
-
-          <div class="price">R$ 25,00<span>/mês</span></div>
-
-          <a href="https://discord.gg/4apRHpBa" target="_blank" rel="noopener noreferrer" class="buy-btn" aria-label="Contratar plano Prata no Discord">
-            Contratar
-          </a>
-        </article>
-
-        <article class="plan-card featured reveal">
-          <span class="popular-badge">Mais escolhido</span>
-          <h3 class="plan-name">Ouro</h3>
-          <div class="ram">4 GB RAM</div>
-
-          <ul class="features">
-            <li>✅ 4 vCPUs</li>
-            <li>✅ SSD NVMe</li>
-            <li>✅ Suporte prioritário</li>
-            <li>✅ Ideal para comunidades ativas</li>
-          </ul>
-
-          <div class="price">R$ 45,00<span>/mês</span></div>
-
-          <a href="https://discord.gg/4apRHpBa" target="_blank" rel="noopener noreferrer" class="buy-btn" aria-label="Contratar plano Ouro no Discord">
-            Contratar
-          </a>
-        </article>
-
-        <article class="plan-card reveal">
-          <h3 class="plan-name">Platina</h3>
-          <div class="ram">8 GB RAM</div>
-
-          <ul class="features">
-            <li>✅ 8 vCPUs</li>
-            <li>✅ SSD NVMe</li>
-            <li>✅ Suporte VIP prioritário</li>
-            <li>✅ Alta performance</li>
-          </ul>
-
-          <div class="price">R$ 80,00<span>/mês</span></div>
-
-          <a href="https://discord.gg/4apRHpBa" target="_blank" rel="noopener noreferrer" class="buy-btn" aria-label="Contratar plano Platina no Discord">
-            Contratar
-          </a>
-        </article>
-      </div>
-
-      <p class="plans-note reveal">
-        Observação: caso seu bot precise de configurações específicas, chame no Discord para avaliarmos o melhor plano.
-      </p>
-    </div>
-  </section>
-
-  <section id="faq" class="section section-alt">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="eyebrow">❓ FAQ</span>
-        <h2 class="section-title">Perguntas <span>frequentes</span></h2>
-        <p class="section-subtitle">
-          Respostas rápidas para as principais dúvidas sobre bots e hospedagem.
-        </p>
-      </div>
-
-      <div class="faq-list">
-        <div class="faq-item reveal">
-          <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-1">
-            <span>Vocês criam bots do zero?</span>
-            <span class="faq-icon" aria-hidden="true">+</span>
-          </button>
-          <div id="faq-1" class="faq-answer">
-            <p>Sim. Criamos bots personalizados de acordo com as funções que você precisa no seu servidor.</p>
+  <main id="main-content" role="main">
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <span class="badge" aria-label="Destaque">🚀 Bots Personalizados + Hospedagem 24h</span>
+          <h1 id="hero-title" class="hero-title">A solução completa para seu servidor Discord</h1>
+          <p class="hero-subtitle">Criamos bots personalizados com sistemas de moderação, tickets, economia, música, verificação e integrações exclusivas. Tudo hospedado 24 horas por dia, 7 dias por semana.</p>
+          <div class="hero-cta" role="group" aria-label="Ações principais">
+            <a href="https://discord.gg/4apRHpBa" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">Solicitar Orçamento</a>
+            <a href="#planos" class="btn btn-outline btn-lg">Ver Planos de Hospedagem</a>
           </div>
+          <p class="hero-trust">Atendimento humanizado • 13h às 00h • Suporte via Discord</p>
         </div>
-
-        <div class="faq-item reveal">
-          <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-2">
-            <span>Os bots ficam online 24h?</span>
-            <span class="faq-icon" aria-hidden="true">+</span>
-          </button>
-          <div id="faq-2" class="faq-answer">
-            <p>Sim. Temos planos de hospedagem para manter seu bot online continuamente.</p>
-          </div>
-        </div>
-
-        <div class="faq-item reveal">
-          <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-3">
-            <span>Como funciona o suporte?</span>
-            <span class="faq-icon" aria-hidden="true">+</span>
-          </button>
-          <div id="faq-3" class="faq-answer">
-            <p>O suporte é feito pelo Discord durante o horário de atendimento, das 13h às 00h.</p>
-          </div>
-        </div>
-
-        <div class="faq-item reveal">
-          <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-4">
-            <span>Posso hospedar um bot que já tenho?</span>
-            <span class="faq-icon" aria-hidden="true">+</span>
-          </button>
-          <div id="faq-4" class="faq-answer">
-            <p>Sim. Podemos avaliar o seu bot e indicar o plano mais adequado para hospedar ele.</p>
+        <div class="hero-visual" aria-hidden="true">
+          <!-- Ilustração SVG ou Imagem Otimizada (WebP/AVIF) -->
+          <div class="hero-illustration">
+             <svg viewBox="0 0 400 400" class="floating-shape" aria-hidden="true">...</svg> 
+             <!-- Dica: Substitua por uma ilustração vetorial leve (undraw.co, icons8) ou screenshot real do painel/bot -->
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="contato" class="section">
-    <div class="container">
-      <div class="contact-card reveal">
-        <h3>Fale com a AmericanPro</h3>
-        <p>
-          Atendimento todos os dias das 13h às 00h. Entre no Discord para solicitar orçamento,
-          contratar hospedagem ou tirar dúvidas.
-        </p>
+    <!-- STATS -->
+    <section class="stats" aria-labelledby="stats-title">
+      <div class="container">
+        <h2 id="stats-title" class="visually-hidden">Nossos Números</h2>
+        <ul class="stats-grid" role="list">
+          <li class="stat-card">
+            <div class="stat-value"><span class="counter" data-target="500">0</span>+</div>
+            <div class="stat-label">Bots Entregues</div>
+          </li>
+          <li class="stat-card">
+            <div class="stat-value"><span class="counter" data-target="99">0</span>%</div>
+            <div class="stat-label">Uptime Garantido</div>
+          </li>
+          <li class="stat-card">
+            <div class="stat-value">24/7</div>
+            <div class="stat-label">Hospedagem Ativa</div>
+          </li>
+          <li class="stat-card">
+            <div class="stat-value"><span class="counter" data-target="50">0</span>+</div>
+            <div class="stat-label">Clientes Satisfeitos</div>
+          </li>
+        </ul>
+      </div>
+    </section>
 
-        <div class="contact-actions">
-          <a href="https://discord.gg/4apRHpBa" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-            Entrar no Discord
-          </a>
-          <a href="#planos" class="btn btn-secondary">
-            Ver planos
-          </a>
+    <!-- SERVICES -->
+    <section id="servicos" class="services section" aria-labelledby="services-title">
+      <div class="container">
+        <header class="section-header">
+          <h2 id="services-title" class="section-title">Nossos Serviços</h2>
+          <p class="section-subtitle">Desenvolvimento sob medida para a necessidade da sua comunidade.</p>
+        </header>
+        <ul class="services-grid" role="list">
+          <!-- Item 1 -->
+          <li class="service-card">
+            <div class="service-icon" aria-hidden="true"><svg><use href="#icon-bot"></use></svg></div>
+            <h3 class="service-title">Bots Personalizados</h3>
+            <p class="service-desc">Desenvolvimento completo do zero: lógica, banco de dados, dashboard web e deploy.</p>
+          </li>
+          <!-- Item 2 -->
+          <li class="service-card">
+            <div class="service-icon" aria-hidden="true"><svg><use href="#icon-shield"></use></svg></div>
+            <h3 class="service-title">Moderação Avançada</h3>
+            <p class="service-desc">Anti-raid, anti-spam, logs de auditoria, automod por IA e punições escalonadas.</p>
+          </li>
+          <!-- Item 3 -->
+          <li class="service-card">
+            <div class="service-icon" aria-hidden="true"><svg><use href="#icon-ticket"></use></svg></div>
+            <h3 class="service-title">Sistema de Tickets</h3>
+            <p class="service-desc">Painel de controle, departamentos, transcript, avaliação de atendimento e SLA.</p>
+          </li>
+          <!-- Item 4 -->
+          <li class="service-card">
+            <div class="service-icon" aria-hidden="true"><svg><use href="#icon-coin"></use></svg></div>
+            <h3 class="service-title">Economia & RPG</h3>
+            <p class="service-desc">Moedas, loja, empregos, crimes, cassino, rankings, inventário e prestígio.</p>
+          </li>
+          <!-- Item 5 -->
+          <li class="service-card">
+            <div class="service-icon" aria-hidden="true"><svg><use href="#icon-music"></use></svg></div>
+            <h3 class="service-title">Música & Entretenimento</h3>
+            <p class="service-desc">Player multi-fonte (YouTube, Spotify, SoundCloud), filas, letras, karaokê.</p>
+          </li>
+          <!-- Item 6 -->
+          <li class="service-card">
+            <div class="service-icon" aria-hidden="true"><svg><use href="#icon-verify"></use></svg></div>
+            <h3 class="service-title">Verificação & Segurança</h3>
+            <p class="service-desc">Captcha, verificação por reação/botão, alt-detector, link protection.</p>
+          </li>
+          <!-- Item 7 -->
+          <li class="service-card">
+            <div class="service-icon" aria-hidden="true"><svg><use href="#icon-api"></use></svg></div>
+            <h3 class="service-title">Integrações & APIs</h3>
+            <p class="service-desc">Conecte seu bot a sites, painéis, CRMs, gateways de pagamento (MercadoPago, Stripe).</p>
+          </li>
+          <!-- Item 8 -->
+          <li class="service-card">
+            <div class="service-icon" aria-hidden="true"><svg><use href="#icon-server"></use></svg></div>
+            <h3 class="service-title">Hospedagem 24h Dedicada</h3>
+            <p class="service-desc">VPS NVMe, Anti-DDoS L7, backups automáticos, painel Pterodactyl, 99.9% SLA.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="planos" class="pricing section" aria-labelledby="pricing-title">
+      <div class="container">
+        <header class="section-header">
+          <h2 id="pricing-title" class="section-title">Planos de Hospedagem</h2>
+          <p class="section-subtitle">Performance enterprise, preço acessível. Todos com SSD NVMe e Anti-DDoS.</p>
+        </header>
+        <div class="pricing-toggle" role="group" aria-label="Ciclo de cobrança">
+          <input type="radio" name="billing" id="monthly" checked value="monthly">
+          <label for="monthly">Mensal</label>
+          <input type="radio" name="billing" id="quarterly" value="quarterly">
+          <label for="quarterly">Trimestral <span class="badge-save">-10%</span></label>
+          <input type="radio" name="billing" id="yearly" value="yearly">
+          <label for="yearly">Anual <span class="badge-save">-20%</span></label>
+        </div>
+        <ul class="pricing-grid" role="list">
+          <!-- Bronze -->
+          <li class="plan-card" data-plan="bronze">
+            <header class="plan-header">
+              <h3 class="plan-name">Bronze</h3>
+              <p class="plan-desc">Ideal para bots iniciais / testes</p>
+            </header>
+            <div class="plan-price">
+              <span class="price-value" data-monthly="15" data-quarterly="40.50" data-yearly="144">R$ 15,00</span>
+              <span class="price-period">/mês</span>
+            </div>
+            <ul class="plan-features" role="list">
+              <li><svg aria-hidden="true"><use href="#icon-check"></use></svg> 1 GB RAM DDR5</li>
+              <li><svg aria-hidden="true"><use href="#icon-check"></use></svg> 1 vCPU AMD EPYC</li>
+              <li><svg aria-hidden="true"><use href="#icon-check"></use></svg> 10 GB SSD NVMe</li>
+              <li><svg aria-hidden="true"><use href="#icon-check"></use></svg> Proteção Anti-DDoS L3/L4</li>
+              <li><svg aria-hidden="true"><use href="#icon-check"></use></svg> Painel Pterodactyl</li>
+              <li><svg aria-hidden="true"><use href="#icon-check"></use></svg> Backup Semanal</li>
+            </ul>
+            <a href="https://discord.gg/4apRHpBa" target="_blank" rel="noopener" class="btn btn-outline btn-block plan-btn">Contratar</a>
+          </li>
+          <!-- Prata -->
+          <li class="plan-card" data-plan="prata">
+            <header class="plan-header">
+              <h3 class="plan-name">Prata</h3>
+              <p class="plan-desc">O equilíbrio custo/benefício</p>
+            </header>
+            <div class="plan-price">
+              <span class="price-value" data-monthly="25" data-quarterly="67.50" data-yearly="240">R$ 25,00</span>
+              <span class="price-period">/mês</span>
+            </div>
+            <ul class="plan-features" role="list">
+              <li><svg aria-hidden="true"><use href="#icon-check"></use></svg> 2 GB RAM DDR5</li>
+              <li><svg aria-hidden="true"><use href="#icon-check"></use></svg> 2 vCPUs AMD EPYC</li>
+              <li><svg aria-hidden="true"><use href="#icon-check"></use></svg> 20 GB SSD NVMe</li>
+              <li><svg aria-hidden="true"><use href="#icon-check"></use></svg> Proteção Anti-DDoS L7</li>
+              <li><svg aria-hidden="true"><use href="#icon-check"></use></svg> Backup Diário</li>
+              <li><svg aria-hidden="true"><use href="#icon-check"></use></svg> Suporte Prioritário (Ticket)</li>
+            </ul>
+            <a href="https://discord.gg/4apRHpBa" target="_blank" rel="noopener" class="btn btn-outline btn-block plan-btn">Contratar</a>
+          </li>
+          <!-- Ouro (Destaque) -->
+          <li class="plan-card plan-card--popular" data-plan="ouro">
+            <div class="popular-badge">Mais Vendido</div>
+            <header class="plan-header">
+              <h3 class="plan-name">Ouro</h3>
+              <p class="plan-desc">Para comunidades grandes/exigentes</p>
+            </header>
+            <div class="plan-price">
+              <span class="price-value" data-monthly="45" data-quarterly="121.50" data-yearly="432">R$ 45,00</span>
+              <span class="price-period">/mês</span>
+            </div>
+            <ul class="plan-features" role="list">
+              <li><svg aria-hidden="true"><use href="#icon-check"></use></svg> 4 GB RAM DDR5</li>
+              <li><svg aria-hidden="true"><use href="#icon-check"></use></svg> 4 vCPUs AMD EPYC</li>
+              <li><svg aria-hidden="true"><use href="#icon-check"></use></svg> 40 GB SSD NVMe</li>
+              <li><svg aria-hidden="true"><use href="#icon-check"></use></svg> Anti-DDoS L7 Avançado</li>
+              <li><svg aria-hidden="true"><use href="#icon-check"></use></svg> Backup Diário + Snapshot</li>
+              <li><svg aria-hidden="true"><use href="#icon-check"></use></svg> Suporte Prioritário (Chat Direto)</li>
+            </ul>
+            <a href="https://discord.gg/4apRHpBa" target="_blank" rel="noopener" class="btn btn-primary btn-block plan-btn">Contratar</a>
+          </li>
+          <!-- Platina -->
+          <li class="plan-card" data-plan="platina">
+            <header class="plan-header">
+              <h3 class="plan-name">Platina</h3>
+              <p class="plan-desc">Máxima performance & prioridade</p>
+            </header>
+            <div class="plan-price">
+              <span class="price-value" data-monthly="80" data-quarterly="216" data-yearly="768">R$ 80,00</span>
+              <span class="price-period">/mês</span>
+            </div>
+            <ul class="plan-features" role="list">
+              <li><svg aria-hidden="true"><use href="#icon-check"></use></svg> 8 GB RAM DDR5</li>
+              <li><svg aria-hidden="true"><use href="#icon-check"></use></svg> 8 vCPUs AMD EPYC</li>
+              <li><svg aria-hidden="true"><use href="#icon-check"></use></svg> 80 GB SSD NVMe</li>
+              <li><svg aria-hidden="true"><use href="#icon-check"></use></svg> Anti-DDoS Premium (Sempre Ativo)</li>
+              <li><svg aria-hidden="true"><use href="#icon-check"></use></svg> Backup Horário + Offsite</li>
+              <li><svg aria-hidden="true"><use href="#icon-check"></use></svg> Suporte VIP 24/7 (Gerente Dedicado)</li>
+            </ul>
+            <a href="https://discord.gg/4apRHpBa" target="_blank" rel="noopener" class="btn btn-outline btn-block plan-btn">Contratar</a>
+          </li>
+        </ul>
+        <p class="pricing-note">Todos os planos incluem: IP Dedicado (opcional), Subdomínio grátis (seu-bot.americanpro.host), Migração grátis de outro host.</p>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="faq section" aria-labelledby="faq-title">
+      <div class="container">
+        <header class="section-header">
+          <h2 id="faq-title" class="section-title">Perguntas Frequentes</h2>
+          <p class="section-subtitle">Não encontrou sua resposta? <a href="https://discord.gg/4apRHpBa" target="_blank" rel="noopener">Chama no Discord</a>.</p>
+        </header>
+        <div class="faq-grid">
+          <details class="faq-item" open>
+            <summary class="faq-question">Vocês criam bots do zero, personalizados?</summary>
+            <div class="faq-answer">
+              <p>Sim! Esse é nosso core business. Você nos diz a ideia, nós arquitetamos, desenvolvemos (Node.js/discord.js ou Python/disnake), testamos, hospedamos e damos manutenção. Desde um bot simples de "bem-vindo" até sistemas complexos de economia, RPG, moderação com IA ou integrações com APIs externas (MercadoPago, Steam, Riot, etc).</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">A hospedagem é realmente 24h? Cai muito?</summary>
+            <div class="faq-answer">
+              <p>Garantimos <strong>99.9% de Uptime (SLA)</strong>. Nossa infraestrutura roda em datacenters Tier III/IV com redundância de energia e rede. Temos proteção Anti-DDoS L7 sempre ativa. Em 2 anos de operação, nossa média real é 99.98%. Se cair fora da manutenção programada (madrugada, aviso prévio), você ganha dias proporcionais grátis.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">Como funciona o suporte técnico?</summary>
+            <div class="faq-answer">
+              <p>Suporte <strong>humanizado via Discord</strong> (nosso servidor), das <strong>13h à 00h (Horário de Brasília)</strong>, todos os dias. Planos Ouro/Platina têm canal prioritário e resposta em <15 min. Para hospedagem, ajudamos na configuração do painel, instalação de dependências, otimização de memória e debug de erros no console. Não fazemos "code review" grátis de bots de terceiros, mas damos direcionamento.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">Posso upar/downgradar o plano a qualquer momento?</summary>
+            <div class="faq-answer">
+              <p><strong>Sim, sem burocracia.</strong> Upgrade é imediato (proporcional ao dias restantes). Downgrade entra no próximo ciclo de cobrança. Sem taxas extras, sem fidelidade. Você paga apenas pelo que usa.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">Quais formas de pagamento aceitam?</summary>
+            <div class="faq-answer">
+              <p><strong>PIX (desconto 5%), Cartão de Crédito (até 12x via Mercado Pago/Stripe), Boleto, Criptomoedas (USDT, BTC, LTC via Coinbase Commerce/NowPayments).</strong> Fatura emitida automaticamente no painel do cliente.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-question">Vocês fazem a migração do meu bot de outro host?</summary>
+            <div class="faq-answer">
+              <p><strong>Sim, grátis!</strong> Basta nos dar acesso (SFTP/Painel) ou mandar os arquivos. Nós configuramos no nosso Pterodactyl, ajustamos variáveis de ambiente, testamos e te entregamos rodando. Geralmente leva < 30 min.</p>
+            </div>
+          </details>
         </div>
       </div>
+    </section>
+
+    <!-- CONTACT / CTA FINAL -->
+    <section id="contato" class="contact section" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="contact-card">
+          <header class="section-header text-center">
+            <h2 id="contact-title" class="section-title">Pronto para começar?</h2>
+            <p class="section-subtitle">Fale com a gente no Discord. Orçamento sem compromisso em minutos.</p>
+          </header>
+          <a href="https://discord.gg/4apRHpBa" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-xl btn-discord-large">
+            <svg class="icon" aria-hidden="true"><use href="#discord-icon"></use></svg>
+            <span>Entrar no Discord &nbsp;→</span>
+          </a>
+          <p class="contact-hours">Atendimento: Todos os dias, 13h às 00h (BRT)</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="logo" aria-label="AmericanPro - Início">
+          <svg class="logo-icon" aria-hidden="true"><use href="#logo-icon"></use></svg>
+          <span class="logo-text">AmericanPro</span>
+        </a>
+        <p>Bots Discord personalizados & Hospedagem de alta performance. Feito por devs, para devs e donos de servidor.</p>
+        <div class="social-links">
+          <a href="https://discord.gg/4apRHpBa" target="_blank" rel="noopener" aria-label="Discord"><svg><use href="#discord-icon"></use></svg></a>
+          <a href="https://github.com" target="_blank" rel="noopener" aria-label="GitHub"><svg><use href="#github-icon"></use></svg></a>
+          <a href="mailto:contato@americanpro.com.br" aria-label="E-mail"><svg><use href="#mail-icon"></use></svg></a>
+        </div>
+      </div>
+      <nav class="footer-nav" aria-label="Links úteis">
+        <h4>Serviços</h4>
+        <ul><li><a href="#servicos">Bots Personalizados</a></li><li><a href="#planos">Hospedagem 24h</a></li><li><a href="#servicos">Moderação & Tickets</a></li><li><a href="#servicos">Economia & RPG</a></li></ul>
+      </nav>
+      <nav class="footer-nav" aria-label="Empresa">
+        <h4>Empresa</h4>
+        <ul><li><a href="#faq">FAQ</a></li><li><a href="#contato">Contato</a></li><li><a href="/termos">Termos de Uso</a></li><li><a href="/privacidade">Política de Privacidade</a></li></ul>
+      </nav>
+      <div class="footer-contact">
+        <h4>Contato Rápido</h4>
+        <address>
+          <p><a href="https://discord.gg/4apRHpBa" target="_blank">Discord: americanpro</a></p>
+          <p><a href="mailto:contato@americanpro.com.br">contato@americanpro.com.br</a></p>
+        </address>
+      </div>
     </div>
-  </section>
-</main>
+    <div class="footer-bottom">
+      <p>&copy; 2026 AmericanPro. Todos os direitos reservados. CNPJ: XX.XXX.XXX/0001-XX</p>
+      <p class="made-with">Feito com <span aria-hidden="true">💚</span> e <span aria-hidden="true">☕</span> no Brasil.</p>
+    </div>
+  </footer>
 
-<footer class="footer">
-  <p>© <span id="year">2026</span> AmericanPro • Todos os direitos reservados</p>
-</footer>
+  <!-- SVG Sprite (Icons) - Coloque no final do body para não bloquear render -->
+  <svg style="display: none;" aria-hidden="true">
+    <symbol id="logo-icon" viewBox="0 0 55 55"><!-- Seu SVG do Logo Aqui --><rect width="55" height="55" rx="12" fill="#21C25E"/><text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" fill="white" font-weight="bold" font-size="24">AP</text></symbol>
+    <symbol id="discord-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.683 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.083.083 0 0 0 .031.057 19.9 19.9 0 0 0 5.994 6.027.077.077 0 0 0 .084-.028c.464-.636.908-1.353 1.179-1.995a.432.432 0 0 1 .472-.025c.16.098.323.19.488.288a.077.077 0 0 0 .083-.028 1.996 1.996 0 0 0 .364-1.173 18.68 18.68 0 0 0-.77-2.666.077.077 0 0 1 .009-.128 12.9 12.9 0 0 1 1.718-3.642.077.077 0 0 1 .127-.009c3.637 1.36 7.472 1.36 11.094 0a.077.077 0 0 1 .127.009c.442.355.827.756 1.17 1.192a.077.077 0 0 1 .009.128 14.07 14.07 0 0 1-.77 2.666.076.076 0 0 0 .032.125 1.84 1.84 0 0 1-.005.247.5.5 0 0 0 .19.378.074.074 0 0 0 .079-.037c.271-.642.715-1.36 1.178-1.995a19.8 19.8 0 0 0 6.002-6.027.077.077 0 0 0-.032-.054c.418-4.536-.42-9.097-3.548-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24"><path fill="currentColor" d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></symbol>
+    <symbol id="icon-bot" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></symbol>
+    <symbol id="icon-shield" viewBox="0 0 24 24"><path fill="currentColor" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
+    <symbol id="icon-ticket" viewBox="0 0 24 24"><path fill="currentColor" d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 7h-4v2h4v-2zm0 4h-4v2h4v-2z"/></symbol>
+    <symbol id="icon-coin" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></symbol>
+    <symbol id="icon-music" viewBox="0 0 24 24"><path fill="currentColor" d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></symbol>
+    <symbol id="icon-verify" viewBox="0 0 24 24"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></symbol>
+    <symbol id="icon-api" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></symbol>
+    <symbol id="icon-server" viewBox="0 0 24 24"><path fill="currentColor" d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 18H6V4h12v16z"/></symbol>
+    <symbol id="github-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.37 1.23-3.21-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.28-1.56 3.285-1.23 3.285-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.21 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></symbol>
+    <symbol id="mail-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></symbol>
+  </svg>
 
-<a class="discord-float" href="https://discord.gg/4apRHpBa" target="_blank" rel="noopener noreferrer">
-  💬 Discord
-</a>
-
-<script>
-document.body.classList.add("animations-ready");
-
-const menuToggle = document.querySelector(".menu-toggle");
-const menu = document.querySelector("#menu");
-
-function closeMenu() {
-  if (!menu || !menuToggle) return;
-
-  menu.classList.remove("open");
-  menuToggle.classList.remove("active");
-  menuToggle.setAttribute("aria-expanded", "false");
-  menuToggle.setAttribute("aria-label", "Abrir menu");
-  document.body.classList.remove("menu-open");
-}
-
-if (menuToggle && menu) {
-  menuToggle.addEventListener("click", () => {
-    const isOpen = menu.classList.toggle("open");
-
-    menuToggle.classList.toggle("active", isOpen);
-    menuToggle.setAttribute("aria-expanded", String(isOpen));
-    menuToggle.setAttribute("aria-label", isOpen ? "Fechar menu" : "Abrir menu");
-    document.body.classList.toggle("menu-open", isOpen);
-  });
-
-  menu.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", closeMenu);
-  });
-
-  document.addEventListener("keydown", event => {
-    if (event.key === "Escape") closeMenu();
-  });
-}
-
-/* FAQ */
-document.querySelectorAll(".faq-question").forEach(button => {
-  button.addEventListener("click", () => {
-    const item = button.closest(".faq-item");
-    const answer = item.querySelector(".faq-answer");
-    const isOpen = item.classList.contains("active");
-
-    document.querySelectorAll(".faq-item").forEach(faq => {
-      faq.classList.remove("active");
-
-      const question = faq.querySelector(".faq-question");
-      const content = faq.querySelector(".faq-answer");
-
-      if (question) question.setAttribute("aria-expanded", "false");
-      if (content) content.style.maxHeight = null;
-    });
-
-    if (!isOpen) {
-      item.classList.add("active");
-      button.setAttribute("aria-expanded", "true");
-      answer.style.maxHeight = answer.scrollHeight + "px";
-    }
-  });
-});
-
-window.addEventListener("resize", () => {
-  const openAnswer = document.querySelector(".faq-item.active .faq-answer");
-  if (openAnswer) {
-    openAnswer.style.maxHeight = openAnswer.scrollHeight + "px";
-  }
-});
-
-/* Contadores */
-const counters = document.querySelectorAll(".counter");
-let countersStarted = false;
-
-function animateCounter(counter) {
-  const target = Number(counter.dataset.target) || 0;
-  const suffix = counter.dataset.suffix || "";
-  const duration = 1200;
-  const start = performance.now();
-
-  function update(now) {
-    const progress = Math.min((now - start) / duration, 1);
-    const eased = 1 - Math.pow(1 - progress, 3);
-    const value = Math.floor(eased * target);
-
-    counter.textContent = value + suffix;
-
-    if (progress < 1) {
-      requestAnimationFrame(update);
-    } else {
-      counter.textContent = target + suffix;
-    }
-  }
-
-  requestAnimationFrame(update);
-}
-
-const statsSection = document.querySelector(".stats");
-
-if (statsSection && counters.length && "IntersectionObserver" in window) {
-  const statsObserver = new IntersectionObserver((entries, observer) => {
-    const visible = entries.some(entry => entry.isIntersecting);
-
-    if (visible && !countersStarted) {
-      countersStarted = true;
-      counters.forEach(animateCounter);
-      observer.disconnect();
-    }
-  }, {
-    threshold: .25
-  });
-
-  statsObserver.observe(statsSection);
-} else {
-  counters.forEach(counter => {
-    counter.textContent = `${counter.dataset.target || "0"}${counter.dataset.suffix || ""}`;
-  });
-}
-
-/* Animação ao rolar */
-const reveals = document.querySelectorAll(".reveal");
-
-if ("IntersectionObserver" in window) {
-  const revealObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: .12
-  });
-
-  reveals.forEach(element => revealObserver.observe(element));
-} else {
-  reveals.forEach(element => element.classList.add("visible"));
-}
-
-/* Ano automático */
-const year = document.querySelector("#year");
-if (year) {
-  year.textContent = new Date().getFullYear();
-}
-</script>
+  <!-- JS Modules -->
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>
