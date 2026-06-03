@@ -68,7 +68,7 @@ section { padding-top:90px; }
 
 <header>
 <div class="logo">
-<img src="https://cdn.discordapp.com/attachments/1510058414632341544/1510061871955443792/baner.png?ex=6a1c1af5&is=6a1ac975&hm=ee1e836ae0264157be99036c4d784c07f2a606cc1f8481ba0f876fa08792f5d8&" alt="AmericanPro">
+<img src="https://i.ibb.co/ck0QvNt9/baner.png" alt="AmericanPro" style="width:55px;height:55px;border-radius:12px;">
 <span>AmericanPro</span>
 </div>
 <nav>
@@ -91,13 +91,13 @@ section { padding-top:90px; }
 </div>
 </div>
 <div class="hero-image">
-<img src="https://cdn.discordapp.com/attachments/1510058414632341544/1510061871955443792/baner.png?ex=6a1c1af5&is=6a1ac975&hm=ee1e836ae0264157be99036c4d784c07f2a606cc1f8481ba0f876fa08792f5d8&" alt="AmericanPro Banner">
+<img src="https://i.ibb.co/ck0QvNt9/baner.png" alt="AmericanPro Banner">
 </div>
 </section>
 
 <section class="stats">
-<div class="stat"><h2 class="counter" data-target="500">0</h2><p>Horas Online</p></div>
-<div class="stat"><h2 class="counter" data-target="100">0</h2><p>Projetos Personalizados</p></div>
+<div class="stat"><h2 class="counter" data-target="1240">0</h2><p>Horas Online</p></div>
+<div class="stat"><h2 class="counter" data-target="87">0</h2><p>Projetos Personalizados</p></div>
 <div class="stat"><h2>24h</h2><p>Hospedagem</p></div>
 <div class="stat"><h2>13h-00h</h2><p>Atendimento</p></div>
 </section>
@@ -126,66 +126,38 @@ section { padding-top:90px; }
 </div>
 </section>
 
-<!-- PLANOS ATUALIZADOS -->
+<!-- PLANOS -->
 <section id="planos" style="padding: 80px 7%; background: #0a0f1a;">
-  <h2 style="text-align:center; font-size:2.8rem; margin-bottom:50px; color:#21C25E;">
-    Nossos Planos de Hospedagem
-  </h2>
-
+  <h2 style="text-align:center; font-size:2.8rem; margin-bottom:50px; color:#21C25E;">Nossos Planos de Hospedagem</h2>
   <div style="display:flex; gap:25px; flex-wrap:wrap; justify-content:center;">
-
-    <!-- Bronze -->
     <div class="plan">
       <h3>Bronze</h3>
       <p class="ram">1 GB RAM</p>
-      <ul>
-        <li>✅ 1 vCPU</li>
-        <li>✅ SSD NVMe</li>
-        <li>✅ Proteção Anti-DDoS</li>
-      </ul>
+      <ul><li>✅ 1 vCPU</li><li>✅ SSD NVMe</li><li>✅ Proteção Anti-DDoS</li></ul>
       <div class="price">R$ 15,00 <span style="font-size:1rem;">/mês</span></div>
       <a href="https://discord.gg/4apRHpBa">Comprar</a>
     </div>
-
-    <!-- Prata -->
     <div class="plan">
       <h3>Prata</h3>
       <p class="ram">2 GB RAM</p>
-      <ul>
-        <li>✅ 2 vCPU</li>
-        <li>✅ SSD NVMe</li>
-        <li>✅ Proteção Anti-DDoS</li>
-      </ul>
+      <ul><li>✅ 2 vCPU</li><li>✅ SSD NVMe</li><li>✅ Proteção Anti-DDoS</li></ul>
       <div class="price">R$ 25,00 <span style="font-size:1rem;">/mês</span></div>
       <a href="https://discord.gg/4apRHpBa">Comprar</a>
     </div>
-
-    <!-- Ouro -->
     <div class="plan" style="border:2px solid #21C25E; transform:scale(1.05);">
       <h3>Ouro</h3>
       <p class="ram">4 GB RAM</p>
-      <ul>
-        <li>✅ 4 vCPU</li>
-        <li>✅ SSD NVMe</li>
-        <li>✅ Suporte Prioritário</li>
-      </ul>
+      <ul><li>✅ 4 vCPU</li><li>✅ SSD NVMe</li><li>✅ Suporte Prioritário</li></ul>
       <div class="price">R$ 45,00 <span style="font-size:1rem;">/mês</span></div>
       <a href="https://discord.gg/4apRHpBa">Comprar</a>
     </div>
-
-    <!-- Platina -->
     <div class="plan">
       <h3>Platina</h3>
       <p class="ram">8 GB RAM</p>
-      <ul>
-        <li>✅ 8 vCPU</li>
-        <li>✅ SSD NVMe</li>
-        <li>✅ Suporte VIP 24/7</li>
-      </ul>
+      <ul><li>✅ 8 vCPU</li><li>✅ SSD NVMe</li><li>✅ Suporte VIP 24/7</li></ul>
       <div class="price">R$ 80,00 <span style="font-size:1rem;">/mês</span></div>
       <a href="https://discord.gg/4apRHpBa">Comprar</a>
     </div>
-
   </div>
 </section>
 
@@ -212,6 +184,41 @@ section { padding-top:90px; }
 <a class="discord-float" href="https://discord.gg/4apRHpBa" target="_blank">Discord</a>
 
 <script>
+// Contadores funcionando
+const counters = document.querySelectorAll(".counter");
+
+const startCounters = () => {
+  counters.forEach(counter => {
+    const target = +counter.getAttribute("data-target");
+    let count = 0;
+    const update = () => {
+      const increment = target / 80;
+      if (count < target) {
+        count += increment;
+        counter.innerText = Math.floor(count);
+        requestAnimationFrame(update);
+      } else {
+        counter.innerText = target;
+      }
+    };
+    update();
+  });
+};
+
+const statsSection = document.querySelector(".stats");
+if (statsSection) {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        startCounters();
+        observer.disconnect();
+      }
+    });
+  });
+  observer.observe(statsSection);
+}
+
+// FAQ
 document.querySelectorAll(".faq-question").forEach(btn => {
   btn.addEventListener("click", () => {
     const answer = btn.nextElementSibling;
