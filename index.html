@@ -4,13 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AmericanPro | Bots para Discord</title>
-
 <meta name="description" content="Bots personalizados para Discord, hospedagem 24h, moderação, tickets, economia e muito mais.">
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
 <style>
-
 *{
 margin:0;
 padding:0;
@@ -18,13 +14,11 @@ box-sizing:border-box;
 font-family:'Poppins',sans-serif;
 scroll-behavior:smooth;
 }
-
 body{
 background:#070b12;
 color:#fff;
 overflow-x:hidden;
 }
-
 .bg-blur{
 position:fixed;
 border-radius:50%;
@@ -32,7 +26,6 @@ filter:blur(120px);
 z-index:-1;
 opacity:.25;
 }
-
 .blur1{
 width:400px;
 height:400px;
@@ -40,7 +33,6 @@ background:#21C25E;
 top:-100px;
 left:-100px;
 }
-
 .blur2{
 width:350px;
 height:350px;
@@ -48,7 +40,6 @@ background:#00ff99;
 right:-100px;
 top:250px;
 }
-
 header{
 position:fixed;
 top:0;
@@ -63,7 +54,6 @@ backdrop-filter:blur(15px);
 z-index:1000;
 border-bottom:1px solid rgba(255,255,255,.08);
 }
-
 .logo{
 display:flex;
 align-items:center;
@@ -72,30 +62,25 @@ font-size:1.5rem;
 font-weight:700;
 color:#21C25E;
 }
-
 .logo img{
 width:55px;
 height:55px;
 object-fit:cover;
 border-radius:12px;
 }
-
 nav{
 display:flex;
 gap:30px;
 }
-
 nav a{
 color:white;
 text-decoration:none;
 font-weight:500;
 transition:.3s;
 }
-
 nav a:hover{
 color:#21C25E;
 }
-
 .discord-btn{
 background:#21C25E;
 padding:12px 22px;
@@ -105,12 +90,10 @@ font-weight:700;
 color:white;
 transition:.3s;
 }
-
 .discord-btn:hover{
 transform:translateY(-3px);
 box-shadow:0 0 25px #21C25E;
 }
-
 .hero{
 min-height:100vh;
 display:grid;
@@ -119,7 +102,6 @@ align-items:center;
 padding:120px 7% 80px;
 gap:60px;
 }
-
 .badge{
 display:inline-block;
 padding:10px 18px;
@@ -128,26 +110,22 @@ border-radius:999px;
 margin-bottom:20px;
 color:#21C25E;
 }
-
 .hero h1{
 font-size:4rem;
 line-height:1.1;
 margin-bottom:20px;
 }
-
 .hero p{
 font-size:1.1rem;
 color:#cfcfcf;
 max-width:650px;
 margin-bottom:30px;
 }
-
 .hero-buttons{
 display:flex;
 gap:15px;
 flex-wrap:wrap;
 }
-
 .btn-primary{
 background:#21C25E;
 color:white;
@@ -156,7 +134,6 @@ padding:14px 25px;
 border-radius:12px;
 font-weight:700;
 }
-
 .btn-secondary{
 border:1px solid #21C25E;
 color:#21C25E;
@@ -165,27 +142,23 @@ padding:14px 25px;
 border-radius:12px;
 font-weight:700;
 }
-
 .hero-image img{
 width:100%;
 border-radius:25px;
 box-shadow:0 0 50px rgba(33,194,94,.25);
 animation:float 4s ease-in-out infinite;
 }
-
 @keyframes float{
 50%{
 transform:translateY(-15px);
 }
 }
-
 .stats{
 display:grid;
 grid-template-columns:repeat(4,1fr);
 gap:20px;
 padding:0 7% 80px;
 }
-
 .stat{
 background:#101722;
 padding:30px;
@@ -193,7 +166,6 @@ border-radius:20px;
 text-align:center;
 border:1px solid rgba(255,255,255,.05);
 }
-
 .stat h2{
 font-size:2.2rem;
 color:#21C25E;
@@ -205,14 +177,12 @@ font-size:2.5rem;
 margin-bottom:50px;
 color:#21C25E;
 }
-
 .services-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:25px;
 padding:0 7%;
 }
-
 .card{
 background:#101722;
 padding:30px;
@@ -220,25 +190,21 @@ border-radius:20px;
 transition:.35s;
 border:1px solid rgba(255,255,255,.05);
 }
-
 .card:hover{
 transform:translateY(-8px);
 border-color:#21C25E;
 box-shadow:0 0 30px rgba(33,194,94,.2);
 }
-
 .card h3{
 margin-bottom:10px;
 color:#21C25E;
 }
-
 .why-grid{
 padding:0 7%;
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:25px;
 }
-
 .why-card{
 background:#101722;
 padding:35px;
@@ -247,67 +213,81 @@ font-size:1.1rem;
 font-weight:600;
 text-align:center;
 }
-
 .plans{
-padding:0 7%;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:25px;
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+justify-content:center;
 }
-
 .plan{
-background:#101722;
-padding:35px;
-border-radius:22px;
-text-align:center;
-border:1px solid rgba(255,255,255,.05);
-transition:.35s;
+background:#1a1a1a;
+padding:25px;
+border-radius:16px;
+width:260px;
+text-align:left;
+border:1px solid rgba(255,255,255,.08);
 }
-
 .plan:hover{
-transform:translateY(-8px);
+transform:translateY(-5px);
 }
-
-.featured{
-border:2px solid #21C25E;
-transform:scale(1.03);
-}
-
 .plan h3{
-font-size:1.5rem;
-margin-bottom:15px;
-}
-
-.plan span{
-font-size:3rem;
-font-weight:800;
-color:#21C25E;
-display:block;
+color:#00ff9d;
 margin-bottom:10px;
 }
-
-.plan a{
-display:inline-block;
-margin-top:20px;
-background:#21C25E;
-padding:12px 22px;
-border-radius:12px;
-text-decoration:none;
-color:white;
-font-weight:700;
+.plan ul{
+margin:15px 0;
+padding-left:5px;
+line-height:1.8;
+color:#ccc;
 }
-
+.plan ul li{
+margin:5px 0;
+}
+.plan .price{
+font-size:22px;
+margin:15px 0;
+}
+.plan button{
+background:white;
+color:black;
+border:none;
+padding:10px 20px;
+border-radius:30px;
+width:100%;
+font-weight:bold;
+cursor:pointer;
+}
+.dropdown{
+position:relative;
+}
+.dropdown-content{
+display:none;
+position:absolute;
+background:#2a2a2a;
+width:100%;
+border-radius:10px;
+margin-top:5px;
+box-shadow:0 8px 16px rgba(0,0,0,0.3);
+z-index:10;
+}
+.dropdown-content a{
+display:block;
+padding:12px 16px;
+color:white;
+text-decoration:none;
+}
+.dropdown-content a:hover{
+background:#3a3a3a;
+}
 #faq{
 padding:100px 7%;
 }
-
 .faq-item{
 background:#101722;
 margin-bottom:15px;
 border-radius:15px;
 overflow:hidden;
 }
-
 .faq-question{
 width:100%;
 background:none;
@@ -319,7 +299,6 @@ font-size:1rem;
 font-weight:600;
 text-align:left;
 }
-
 .faq-answer{
 max-height:0;
 overflow:hidden;
@@ -327,7 +306,6 @@ padding:0 20px;
 color:#ccc;
 transition:.4s;
 }
-
 .contact-box{
 max-width:700px;
 margin:auto;
@@ -336,13 +314,11 @@ padding:40px;
 border-radius:25px;
 text-align:center;
 }
-
 .contact-box h3{
 font-size:2rem;
 color:#21C25E;
 margin-bottom:10px;
 }
-
 .contact-box a{
 display:inline-block;
 margin-top:20px;
@@ -353,7 +329,6 @@ text-decoration:none;
 font-weight:700;
 color:white;
 }
-
 footer{
 padding:40px;
 text-align:center;
@@ -361,7 +336,6 @@ color:#999;
 margin-top:80px;
 border-top:1px solid rgba(255,255,255,.05);
 }
-
 .discord-float{
 position:fixed;
 right:20px;
@@ -375,472 +349,219 @@ font-weight:700;
 box-shadow:0 0 30px rgba(88,101,242,.4);
 z-index:999;
 }
-
 section{
 padding-top:90px;
 }
-
 @media(max-width:900px){
-
 .hero{
 grid-template-columns:1fr;
 text-align:center;
 }
-
 .hero h1{
 font-size:2.7rem;
 }
-
 .stats{
 grid-template-columns:repeat(2,1fr);
 }
-
 nav{
 display:none;
 }
-
 .hero-buttons{
 justify-content:center;
 }
-
 }
-
 @media(max-width:600px){
-
 .stats{
 grid-template-columns:1fr;
 }
-
 .hero h1{
 font-size:2.2rem;
 }
-
 .section-title{
 font-size:2rem;
 }
-
-.logo span{
-font-size:1.1rem;
 }
-
-}
-  
 </style>
-
 </head>
-
 <body>
 
 <div class="bg-blur blur1"></div>
 <div class="bg-blur blur2"></div>
 
 <header>
-
 <div class="logo">
 <img src="https://cdn.discordapp.com/attachments/1510058414632341544/1510061871955443792/baner.png?ex=6a1c1af5&is=6a1ac975&hm=ee1e836ae0264157be99036c4d784c07f2a606cc1f8481ba0f876fa08792f5d8&" alt="AmericanPro">
 <span>AmericanPro</span>
 </div>
-
 <nav>
 <a href="#servicos">Serviços</a>
 <a href="#planos">Planos</a>
 <a href="#faq">FAQ</a>
 <a href="#contato">Contato</a>
 </nav>
-
-<a class="discord-btn" href="https://discord.gg/4apRHpBa" target="_blank">
-Entrar no Discord
-</a>
-
+<a class="discord-btn" href="https://discord.gg/4apRHpBa" target="_blank">Entrar no Discord</a>
 </header>
 
 <section class="hero">
-
 <div class="hero-content">
-
-<span class="badge">
-🚀 Bots Personalizados + Hospedagem 24h
-</span>
-
-<h1>
-A solução completa para seu servidor Discord
-</h1>
-
-<p>
-Criamos bots personalizados com sistemas de moderação,
-tickets, economia, música, verificação e integrações exclusivas.
-Tudo hospedado 24 horas por dia.
-</p>
-
+<span class="badge">🚀 Bots Personalizados + Hospedagem 24h</span>
+<h1>A solução completa para seu servidor Discord</h1>
+<p>Criamos bots personalizados com sistemas de moderação, tickets, economia, música, verificação e integrações exclusivas. Tudo hospedado 24 horas por dia.</p>
 <div class="hero-buttons">
-
-<a href="https://discord.gg/4apRHpBa" target="_blank" class="btn-primary">
-Solicitar Orçamento
-</a>
-
-<a href="#planos" class="btn-secondary">
-Ver Planos
-</a>
-
+<a href="https://discord.gg/4apRHpBa" target="_blank" class="btn-primary">Solicitar Orçamento</a>
+<a href="#planos" class="btn-secondary">Ver Planos</a>
 </div>
-
 </div>
-
 <div class="hero-image">
-
 <img src="https://cdn.discordapp.com/attachments/1510058414632341544/1510061871955443792/baner.png?ex=6a1c1af5&is=6a1ac975&hm=ee1e836ae0264157be99036c4d784c07f2a606cc1f8481ba0f876fa08792f5d8&" alt="AmericanPro Banner">
-
 </div>
-
 </section>
 
 <section class="stats">
-
-<div class="stat">
-<h2 class="counter" data-target="500">0</h2>
-<p>Horas Online</p>
-</div>
-
-<div class="stat">
-<h2 class="counter" data-target="100">0</h2>
-<p>Projetos Personalizados</p>
-</div>
-
-<div class="stat">
-<h2>24h</h2>
-<p>Hospedagem</p>
-</div>
-
-<div class="stat">
-<h2>13h-00h</h2>
-<p>Atendimento</p>
-</div>
-
+<div class="stat"><h2 class="counter" data-target="500">0</h2><p>Horas Online</p></div>
+<div class="stat"><h2 class="counter" data-target="100">0</h2><p>Projetos Personalizados</p></div>
+<div class="stat"><h2>24h</h2><p>Hospedagem</p></div>
+<div class="stat"><h2>13h-00h</h2><p>Atendimento</p></div>
 </section>
 
 <section id="servicos">
-
-<h2 class="section-title">
-Nossos Serviços
-</h2>
-
+<h2 class="section-title">Nossos Serviços</h2>
 <div class="services-grid">
-
-<div class="card">
-<h3>🤖 Bots Personalizados</h3>
-<p>Desenvolvimento completo conforme a necessidade do cliente.</p>
+<div class="card"><h3>🤖 Bots Personalizados</h3><p>Desenvolvimento completo conforme a necessidade do cliente.</p></div>
+<div class="card"><h3>🛡️ Moderação</h3><p>Proteção automática para servidores.</p></div>
+<div class="card"><h3>🎫 Tickets</h3><p>Sistema profissional de suporte.</p></div>
+<div class="card"><h3>💰 Economia</h3><p>Moedas, rankings e recompensas.</p></div>
+<div class="card"><h3>🎵 Música</h3><p>Entretenimento para sua comunidade.</p></div>
+<div class="card"><h3>✅ Verificação</h3><p>Segurança e controle de acesso.</p></div>
+<div class="card"><h3>🔗 Integrações</h3><p>APIs, sites e sistemas externos.</p></div>
+<div class="card"><h3>☁️ Hospedagem 24h</h3><p>Seu bot sempre online.</p></div>
 </div>
-
-<div class="card">
-<h3>🛡️ Moderação</h3>
-<p>Proteção automática para servidores.</p>
-</div>
-
-<div class="card">
-<h3>🎫 Tickets</h3>
-<p>Sistema profissional de suporte.</p>
-</div>
-
-<div class="card">
-<h3>💰 Economia</h3>
-<p>Moedas, rankings e recompensas.</p>
-</div>
-
-<div class="card">
-<h3>🎵 Música</h3>
-<p>Entretenimento para sua comunidade.</p>
-</div>
-
-<div class="card">
-<h3>✅ Verificação</h3>
-<p>Segurança e controle de acesso.</p>
-</div>
-
-<div class="card">
-<h3>🔗 Integrações</h3>
-<p>APIs, sites e sistemas externos.</p>
-</div>
-
-<div class="card">
-<h3>☁️ Hospedagem 24h</h3>
-<p>Seu bot sempre online.</p>
-</div>
-
-</div>
-
 </section>
 
 <section>
-
-<h2 class="section-title">
-Por que escolher a AmericanPro?
-</h2>
-
+<h2 class="section-title">Por que escolher a AmericanPro?</h2>
 <div class="why-grid">
-
-<div class="why-card">
-⚡ Desenvolvimento rápido
+<div class="why-card">⚡ Desenvolvimento rápido</div>
+<div class="why-card">🟢 Suporte ativo</div>
+<div class="why-card">🔒 Segurança avançada</div>
+<div class="why-card">🚀 Alta performance</div>
 </div>
-
-<div class="why-card">
-🟢 Suporte ativo
-</div>
-
-<div class="why-card">
-🔒 Segurança avançada
-</div>
-
-<div class="why-card">
-🚀 Alta performance
-</div>
-
-</div>
-
 </section>
 
 <section id="planos">
-
-<h2 class="section-title">
-Planos de Hospedagem
-</h2>
+<h2 class="section-title">Planos de Hospedagem</h2>
 
 <div class="plans">
 
-<div class="plan">
-<h3>Quinzenal</h3>
-<span>R$15</span>
-<p>15 dias</p>
-<a href="https://discord.gg/4apRHpBa">Contratar</a>
-</div>
+  <!-- Plano Semanal -->
+  <div class="plan">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+      <h3>Semanal</h3>
+      <span style="background:#00ff9d; color:black; padding:4px 10px; border-radius:6px; font-size:13px; font-weight:bold;">1 GB RAM</span>
+    </div>
+    <ul>
+      <li>1 vCPU</li>
+      <li>SSD NVMe</li>
+      <li>Banda Ilimitada</li>
+    </ul>
+    <div class="price"><strong>R$ 15</strong> / semana</div>
+    <div class="dropdown">
+      <button onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block'">Comprar ▼</button>
+      <div class="dropdown-content">
+        <a href="#">Pix</a>
+        <a href="#">Cartão de Crédito</a>
+      </div>
+    </div>
+  </div>
 
-<div class="plan featured">
-<h3>Mensal</h3>
-<span>R$25</span>
-<p>30 dias</p>
-<a href="https://discord.gg/4apRHpBa">Contratar</a>
-</div>
+  <!-- Plano Mensal -->
+  <div class="plan">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+      <h3>Mensal</h3>
+      <span style="background:#00ff9d; color:black; padding:4px 10px; border-radius:6px; font-size:13px; font-weight:bold;">2 GB RAM</span>
+    </div>
+    <ul>
+      <li>2 vCPU</li>
+      <li>SSD NVMe</li>
+      <li>Banda Ilimitada</li>
+    </ul>
+    <div class="price"><strong>R$ 25</strong> / mês</div>
+    <div class="dropdown">
+      <button onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block'">Comprar ▼</button>
+      <div class="dropdown-content">
+        <a href="#">Pix</a>
+        <a href="#">Cartão de Crédito</a>
+      </div>
+    </div>
+  </div>
 
-<div class="plan">
-<h3>Trimestral</h3>
-<span>R$60</span>
-<p>90 dias</p>
-<a href="https://discord.gg/4apRHpBa">Contratar</a>
-</div>
+  <!-- Plano Trimestral -->
+  <div class="plan">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+      <h3>Trimestral</h3>
+      <span style="background:#00ff9d; color:black; padding:4px 10px; border-radius:6px; font-size:13px; font-weight:bold;">4 GB RAM</span>
+    </div>
+    <ul>
+      <li>4 vCPU</li>
+      <li>SSD NVMe</li>
+      <li>Banda Ilimitada</li>
+    </ul>
+    <div class="price"><strong>R$ 60</strong> / 3 meses</div>
+    <div class="dropdown">
+      <button onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block'">Comprar ▼</button>
+      <div class="dropdown-content">
+        <a href="#">Pix</a>
+        <a href="#">Cartão de Crédito</a>
+      </div>
+    </div>
+  </div>
 
-<div class="plan">
-<h3>Anual</h3>
-<span>R$160</span>
-<p>365 dias</p>
-<a href="https://discord.gg/4apRHpBa">Contratar</a>
 </div>
-
-</div>
-
 </section>
 
 <section id="faq">
-
-<h2 class="section-title">
-Perguntas Frequentes
-</h2>
-
+<h2 class="section-title">Perguntas Frequentes</h2>
 <div class="faq-item">
-<button class="faq-question">
-Vocês criam bots do zero?
-</button>
-<div class="faq-answer">
-Sim, totalmente personalizados.
+<button class="faq-question">Vocês criam bots do zero?</button>
+<div class="faq-answer">Sim, totalmente personalizados.</div>
 </div>
-</div>
-
 <div class="faq-item">
-<button class="faq-question">
-Os bots ficam online 24h?
-</button>
-<div class="faq-answer">
-Sim, com hospedagem dedicada.
+<button class="faq-question">Os bots ficam online 24h?</button>
+<div class="faq-answer">Sim, com hospedagem dedicada.</div>
 </div>
-</div>
-
 <div class="faq-item">
-<button class="faq-question">
-Como funciona o suporte?
-</button>
-<div class="faq-answer">
-Pelo Discord durante o horário de atendimento.
+<button class="faq-question">Como funciona o suporte?</button>
+<div class="faq-answer">Pelo Discord durante o horário de atendimento.</div>
 </div>
-</div>
-
 </section>
 
 <section id="contato">
-
-<h2 class="section-title">
-Contato
-</h2>
-
+<h2 class="section-title">Contato</h2>
 <div class="contact-box">
-
 <h3>AmericanPro</h3>
-
-<p>
-Atendimento todos os dias das 13h às 00h
-</p>
-
-<a href="https://discord.gg/4apRHpBa" target="_blank">
-Entrar no Discord
-</a>
-
+<p>Atendimento todos os dias das 13h às 00h</p>
+<a href="https://discord.gg/4apRHpBa" target="_blank">Entrar no Discord</a>
 </div>
-
 </section>
 
 <footer>
-
-<p>
-© 2026 AmericanPro • Todos os direitos reservados
-</p>
-
+<p>© 2026 AmericanPro • Todos os direitos reservados</p>
 </footer>
 
-<a class="discord-float" href="https://discord.gg/4apRHpBa" target="_blank">
-Discord
-</a>
+<a class="discord-float" href="https://discord.gg/4apRHpBa" target="_blank">Discord</a>
 
 <script>
-
-// FAQ
-
-document.querySelectorAll(".faq-question").forEach(btn=>{
-
-btn.addEventListener("click",()=>{
-
-const answer = btn.nextElementSibling;
-
-if(answer.style.maxHeight){
-
-answer.style.maxHeight = null;
-
-}else{
-
-document.querySelectorAll(".faq-answer").forEach(a=>{
-a.style.maxHeight = null;
+document.querySelectorAll(".faq-question").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const answer = btn.nextElementSibling;
+    if (answer.style.maxHeight) {
+      answer.style.maxHeight = null;
+    } else {
+      document.querySelectorAll(".faq-answer").forEach(a => a.style.maxHeight = null);
+      answer.style.maxHeight = answer.scrollHeight + "px";
+    }
+  });
 });
-
-answer.style.maxHeight =
-answer.scrollHeight + "px";
-
-}
-
-});
-
-});
-
-// Contadores
-
-const counters =
-document.querySelectorAll(".counter");
-
-const startCounters = () => {
-
-counters.forEach(counter => {
-
-const target =
-+counter.getAttribute("data-target");
-
-let count = 0;
-
-const update = () => {
-
-const increment = target / 100;
-
-if(count < target){
-
-count += increment;
-
-counter.innerText =
-Math.floor(count);
-
-requestAnimationFrame(update);
-
-}else{
-
-counter.innerText = target;
-
-}
-
-};
-
-update();
-
-});
-
-};
-
-const observer =
-new IntersectionObserver(entries=>{
-
-entries.forEach(entry=>{
-
-if(entry.isIntersecting){
-
-startCounters();
-
-observer.disconnect();
-
-}
-
-});
-
-});
-
-const statsSection =
-document.querySelector(".stats");
-
-if(statsSection){
-
-observer.observe(statsSection);
-
-}
-
-// Fade Animation
-
-const animatedElements =
-document.querySelectorAll(
-".card,.plan,.why-card,.stat,.faq-item,.contact-box"
-);
-
-const fadeObserver =
-new IntersectionObserver(entries=>{
-
-entries.forEach(entry=>{
-
-if(entry.isIntersecting){
-
-entry.target.style.opacity = "1";
-entry.target.style.transform =
-"translateY(0)";
-
-}
-
-});
-
-},{
-threshold:.15
-});
-
-animatedElements.forEach(el=>{
-
-el.style.opacity = "0";
-el.style.transform =
-"translateY(40px)";
-el.style.transition =
-"all .7s ease";
-
-fadeObserver.observe(el);
-
-});
-
 </script>
 
 </body>
