@@ -6,109 +6,224 @@
 <title>AmericanPro | Bots para Discord</title>
 <meta name="description" content="Bots personalizados para Discord, hospedagem 24h, moderação, tickets, economia e muito mais.">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
 <style>
-/* CSS GERAL */
-*{ margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; scroll-behavior:smooth; }
-body{ background:#070b12; color:#fff; overflow-x:hidden; }
-
-/* ... (seus estilos originais permanecem aqui) ... */
-.bg-blur{ position:fixed; border-radius:50%; filter:blur(120px); z-index:-1; opacity:.25; }
-.blur1{ width:400px; height:400px; background:#21C25E; top:-100px; left:-100px; }
-.blur2{ width:350px; height:350px; background:#00ff99; right:-100px; top:250px; }
-header{ position:fixed; top:0; left:0; width:100%; display:flex; justify-content:space-between; align-items:center; padding:20px 7%; background:rgba(10,15,25,.85); backdrop-filter:blur(15px); z-index:1000; border-bottom:1px solid rgba(255,255,255,.08); }
-.logo{ display:flex; align-items:center; gap:12px; font-size:1.5rem; font-weight:700; color:#21C25E; }
-.logo img{ width:55px; height:55px; object-fit:cover; border-radius:12px; }
-nav{ display:flex; gap:30px; }
-nav a{ color:white; text-decoration:none; font-weight:500; transition:.3s; }
-nav a:hover{ color:#21C25E; }
-.discord-btn{ background:#21C25E; padding:12px 22px; border-radius:12px; text-decoration:none; font-weight:700; color:white; transition:.3s; }
-.hero{ min-height:100vh; display:grid; grid-template-columns:1fr 1fr; align-items:center; padding:120px 7% 80px; gap:60px; }
-.badge{ display:inline-block; padding:10px 18px; border:1px solid #21C25E; border-radius:999px; margin-bottom:20px; color:#21C25E; }
-.hero h1{ font-size:4rem; line-height:1.1; margin-bottom:20px; }
-.hero p{ font-size:1.1rem; color:#cfcfcf; max-width:650px; margin-bottom:30px; }
-.hero-buttons{ display:flex; gap:15px; flex-wrap:wrap; }
-.btn-primary{ background:#21C25E; color:white; text-decoration:none; padding:14px 25px; border-radius:12px; font-weight:700; }
-.btn-secondary{ border:1px solid #21C25E; color:#21C25E; text-decoration:none; padding:14px 25px; border-radius:12px; font-weight:700; }
-.hero-image img{ width:100%; border-radius:25px; box-shadow:0 0 50px rgba(33,194,94,.25); animation:float 4s ease-in-out infinite; }
-@keyframes float{ 50%{ transform:translateY(-15px); } }
-.stats{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; padding:0 7% 80px; }
-.stat{ background:#101722; padding:30px; border-radius:20px; text-align:center; border:1px solid rgba(255,255,255,.05); }
-.section-title{ text-align:center; font-size:2.5rem; margin-bottom:50px; color:#21C25E; }
-.services-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:25px; padding:0 7%; }
-.card{ background:#101722; padding:30px; border-radius:20px; transition:.35s; border:1px solid rgba(255,255,255,.05); }
-.why-grid{ padding:0 7%; display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:25px; }
-.why-card{ background:#101722; padding:35px; border-radius:20px; font-size:1.1rem; font-weight:600; text-align:center; }
-
-/* NOVO CSS DOS PLANOS */
-.pricing-container { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; padding: 20px; }
-.plan-card { background: #101722; border: 1px solid rgba(255,255,255,.05); padding: 25px; border-radius: 15px; width: 240px; transition: 0.3s; text-align: center; }
-.plan-card:hover { transform: translateY(-10px); border-color: #21C25E; }
-.highlight { border: 2px solid #21C25E; box-shadow: 0 0 15px rgba(33,194,94,0.1); }
-.plan-name { font-size: 1.3rem; margin-bottom: 10px; color: white; }
-.ram { color: #21C25E; font-size: 1.1rem; font-weight: bold; margin-bottom: 15px; }
-.features { list-style: none; padding: 0; margin-bottom: 20px; text-align: left; font-size: 0.9rem; }
-.features li { padding: 6px 0; border-bottom: 1px solid #222; color: #ccc; }
-.price { font-size: 1.5rem; font-weight: bold; margin-bottom: 15px; color: white; }
-.buy-btn { display: inline-block; text-decoration: none; background: #21C25E; color: white; padding: 10px 20px; border-radius: 8px; width: 100%; font-weight: bold; text-align: center; box-sizing: border-box; transition: 0.3s; }
-.buy-btn:hover { background: #1a9a4b; color: white; }
-
-/* ... (resto dos seus estilos: faq, contact-box, footer, etc.) ... */
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; scroll-behavior:smooth; }
+body { background:#070b12; color:#fff; overflow-x:hidden; }
+.bg-blur { position:fixed; border-radius:50%; filter:blur(120px); z-index:-1; opacity:.25; }
+.blur1 { width:400px; height:400px; background:#21C25E; top:-100px; left:-100px; }
+.blur2 { width:350px; height:350px; background:#00ff99; right:-100px; top:250px; }
+header { position:fixed; top:0; left:0; width:100%; display:flex; justify-content:space-between; align-items:center; padding:20px 7%; background:rgba(10,15,25,.85); backdrop-filter:blur(15px); z-index:1000; border-bottom:1px solid rgba(255,255,255,.08); }
+.logo { display:flex; align-items:center; gap:12px; font-size:1.5rem; font-weight:700; color:#21C25E; }
+.logo img { width:55px; height:55px; object-fit:cover; border-radius:12px; }
+nav { display:flex; gap:30px; }
+nav a { color:white; text-decoration:none; font-weight:500; transition:.3s; }
+nav a:hover { color:#21C25E; }
+.discord-btn { background:#21C25E; padding:12px 22px; border-radius:12px; text-decoration:none; font-weight:700; color:white; transition:.3s; }
+.discord-btn:hover { transform:translateY(-3px); box-shadow:0 0 25px #21C25E; }
+.hero { min-height:100vh; display:grid; grid-template-columns:1fr 1fr; align-items:center; padding:120px 7% 80px; gap:60px; }
+.badge { display:inline-block; padding:10px 18px; border:1px solid #21C25E; border-radius:999px; margin-bottom:20px; color:#21C25E; }
+.hero h1 { font-size:4rem; line-height:1.1; margin-bottom:20px; }
+.hero p { font-size:1.1rem; color:#cfcfcf; max-width:650px; margin-bottom:30px; }
+.hero-buttons { display:flex; gap:15px; flex-wrap:wrap; }
+.btn-primary { background:#21C25E; color:white; text-decoration:none; padding:14px 25px; border-radius:12px; font-weight:700; }
+.btn-secondary { border:1px solid #21C25E; color:#21C25E; text-decoration:none; padding:14px 25px; border-radius:12px; font-weight:700; }
+.hero-image img { width:100%; border-radius:25px; box-shadow:0 0 50px rgba(33,194,94,.25); animation:float 4s ease-in-out infinite; }
+@keyframes float { 50% { transform:translateY(-15px); } }
+.stats { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; padding:0 7% 80px; }
+.stat { background:#101722; padding:30px; border-radius:20px; text-align:center; border:1px solid rgba(255,255,255,.05); }
+.stat h2 { font-size:2.2rem; color:#21C25E; margin-bottom:8px; }
+.section-title { text-align:center; font-size:2.5rem; margin-bottom:50px; color:#21C25E; }
+.services-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:25px; padding:0 7%; }
+.card { background:#101722; padding:30px; border-radius:20px; transition:.35s; border:1px solid rgba(255,255,255,.05); }
+.card:hover { transform:translateY(-8px); border-color:#21C25E; box-shadow:0 0 30px rgba(33,194,94,.2); }
+.card h3 { margin-bottom:10px; color:#21C25E; }
+.why-grid { padding:0 7%; display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:25px; }
+.why-card { background:#101722; padding:35px; border-radius:20px; font-size:1.1rem; font-weight:600; text-align:center; }
+.plans { display:flex; gap:25px; flex-wrap:wrap; justify-content:center; }
+.plan { background:#101722; border-radius:20px; padding:30px; width:260px; border:1px solid #21C25E; }
+.plan:hover { transform:translateY(-5px); }
+.plan h3 { font-size:1.6rem; margin-bottom:5px; }
+.plan .ram { color:#21C25E; font-weight:bold; margin-bottom:20px; }
+.plan ul { list-style:none; padding:0; line-height:2; color:#ccc; }
+.plan .price { margin:25px 0; font-size:1.8rem; font-weight:700; }
+.plan a { display:block; background:#21C25E; color:white; text-align:center; padding:12px; border-radius:10px; text-decoration:none; font-weight:600; }
+#faq { padding:100px 7%; }
+.faq-item { background:#101722; margin-bottom:15px; border-radius:15px; overflow:hidden; }
+.faq-question { width:100%; background:none; border:none; color:white; padding:20px; cursor:pointer; font-size:1rem; font-weight:600; text-align:left; }
+.faq-answer { max-height:0; overflow:hidden; padding:0 20px; color:#ccc; transition:.4s; }
+.contact-box { max-width:700px; margin:auto; background:#101722; padding:40px; border-radius:25px; text-align:center; }
+.contact-box h3 { font-size:2rem; color:#21C25E; margin-bottom:10px; }
+.contact-box a { display:inline-block; margin-top:20px; background:#21C25E; padding:14px 25px; border-radius:12px; text-decoration:none; font-weight:700; color:white; }
+footer { padding:40px; text-align:center; color:#999; margin-top:80px; border-top:1px solid rgba(255,255,255,.05); }
+.discord-float { position:fixed; right:20px; bottom:20px; background:#5865F2; color:white; text-decoration:none; padding:15px 22px; border-radius:999px; font-weight:700; box-shadow:0 0 30px rgba(88,101,242,.4); z-index:999; }
+section { padding-top:90px; }
+@media(max-width:900px){ .hero{grid-template-columns:1fr;text-align:center;} .hero h1{font-size:2.7rem;} .stats{grid-template-columns:repeat(2,1fr);} nav{display:none;} .hero-buttons{justify-content:center;} }
+@media(max-width:600px){ .stats{grid-template-columns:1fr;} .hero h1{font-size:2.2rem;} .section-title{font-size:2rem;} }
 </style>
 </head>
 <body>
-<!-- ... (resto do seu HTML até a seção de planos) ... -->
 
-<section id="planos">
-    <h2 class="section-title">Nossos Planos de Hospedagem</h2>
-    <div class="pricing-container">
-        <div class="plan-card">
-            <h3 class="plan-name">Bronze</h3>
-            <div class="ram">1 GB RAM</div>
-            <ul class="features">
-                <li>✅ 1 vCPU</li>
-                <li>✅ SSD NVMe</li>
-                <li>✅ Proteção Anti-DDoS</li>
-            </ul>
-            <div class="price">R$ 15,00/mês</div>
-            <a href="SEU_LINK_AQUI" class="buy-btn">Comprar</a>
-        </div>
-        <div class="plan-card">
-            <h3 class="plan-name">Prata</h3>
-            <div class="ram">2 GB RAM</div>
-            <ul class="features">
-                <li>✅ 2 vCPUs</li>
-                <li>✅ SSD NVMe</li>
-                <li>✅ Proteção Anti-DDoS</li>
-            </ul>
-            <div class="price">R$ 25,00/mês</div>
-            <a href="SEU_LINK_AQUI" class="buy-btn">Comprar</a>
-        </div>
-        <div class="plan-card highlight">
-            <h3 class="plan-name">Ouro</h3>
-            <div class="ram">4 GB RAM</div>
-            <ul class="features">
-                <li>✅ 4 vCPUs</li>
-                <li>✅ SSD NVMe</li>
-                <li>✅ Suporte Prioritário</li>
-            </ul>
-            <div class="price">R$ 45,00/mês</div>
-            <a href="SEU_LINK_AQUI" class="buy-btn">Comprar</a>
-        </div>
-        <div class="plan-card">
-            <h3 class="plan-name">Platina</h3>
-            <div class="ram">8 GB RAM</div>
-            <ul class="features">
-                <li>✅ 8 vCPUs</li>
-                <li>✅ SSD NVMe</li>
-                <li>✅ Suporte VIP 24/7</li>
-            </ul>
-            <div class="price">R$ 80,00/mês</div>
-            <a href="SEU_LINK_AQUI" class="buy-btn">Comprar</a>
-        </div>
-    </div>
+<div class="bg-blur blur1"></div>
+<div class="bg-blur blur2"></div>
+
+<header>
+<div class="logo">
+<img src="https://cdn.discordapp.com/attachments/1510058414632341544/1510061871955443792/baner.png?ex=6a1c1af5&is=6a1ac975&hm=ee1e836ae0264157be99036c4d784c07f2a606cc1f8481ba0f876fa08792f5d8&" alt="AmericanPro">
+<span>AmericanPro</span>
+</div>
+<nav>
+<a href="#servicos">Serviços</a>
+<a href="#planos">Planos</a>
+<a href="#faq">FAQ</a>
+<a href="#contato">Contato</a>
+</nav>
+<a class="discord-btn" href="https://discord.gg/4apRHpBa" target="_blank">Entrar no Discord</a>
+</header>
+
+<section class="hero">
+<div class="hero-content">
+<span class="badge">🚀 Bots Personalizados + Hospedagem 24h</span>
+<h1>A solução completa para seu servidor Discord</h1>
+<p>Criamos bots personalizados com sistemas de moderação, tickets, economia, música, verificação e integrações exclusivas. Tudo hospedado 24 horas por dia.</p>
+<div class="hero-buttons">
+<a href="https://discord.gg/4apRHpBa" target="_blank" class="btn-primary">Solicitar Orçamento</a>
+<a href="#planos" class="btn-secondary">Ver Planos</a>
+</div>
+</div>
+<div class="hero-image">
+<img src="https://cdn.discordapp.com/attachments/1510058414632341544/1510061871955443792/baner.png?ex=6a1c1af5&is=6a1ac975&hm=ee1e836ae0264157be99036c4d784c07f2a606cc1f8481ba0f876fa08792f5d8&" alt="AmericanPro Banner">
+</div>
 </section>
 
-<!-- ... (resto do seu HTML: faq, contato, script) ... -->
+<section class="stats">
+<div class="stat"><h2 class="counter" data-target="500">0</h2><p>Horas Online</p></div>
+<div class="stat"><h2 class="counter" data-target="100">0</h2><p>Projetos Personalizados</p></div>
+<div class="stat"><h2>24h</h2><p>Hospedagem</p></div>
+<div class="stat"><h2>13h-00h</h2><p>Atendimento</p></div>
+</section>
+
+<section id="servicos">
+<h2 class="section-title">Nossos Serviços</h2>
+<div class="services-grid">
+<div class="card"><h3>🤖 Bots Personalizados</h3><p>Desenvolvimento completo conforme a necessidade do cliente.</p></div>
+<div class="card"><h3>🛡️ Moderação</h3><p>Proteção automática para servidores.</p></div>
+<div class="card"><h3>🎫 Tickets</h3><p>Sistema profissional de suporte.</p></div>
+<div class="card"><h3>💰 Economia</h3><p>Moedas, rankings e recompensas.</p></div>
+<div class="card"><h3>🎵 Música</h3><p>Entretenimento para sua comunidade.</p></div>
+<div class="card"><h3>✅ Verificação</h3><p>Segurança e controle de acesso.</p></div>
+<div class="card"><h3>🔗 Integrações</h3><p>APIs, sites e sistemas externos.</p></div>
+<div class="card"><h3>☁️ Hospedagem 24h</h3><p>Seu bot sempre online.</p></div>
+</div>
+</section>
+
+<section>
+<h2 class="section-title">Por que escolher a AmericanPro?</h2>
+<div class="why-grid">
+<div class="why-card">⚡ Desenvolvimento rápido</div>
+<div class="why-card">🟢 Suporte ativo</div>
+<div class="why-card">🔒 Segurança avançada</div>
+<div class="why-card">🚀 Alta performance</div>
+</div>
+</section>
+
+<!-- PLANOS ATUALIZADOS -->
+<section id="planos" style="padding: 80px 7%; background: #0a0f1a;">
+  <h2 style="text-align:center; font-size:2.8rem; margin-bottom:50px; color:#21C25E;">
+    Nossos Planos de Hospedagem
+  </h2>
+
+  <div style="display:flex; gap:25px; flex-wrap:wrap; justify-content:center;">
+
+    <!-- Bronze -->
+    <div class="plan">
+      <h3>Bronze</h3>
+      <p class="ram">1 GB RAM</p>
+      <ul>
+        <li>✅ 1 vCPU</li>
+        <li>✅ SSD NVMe</li>
+        <li>✅ Proteção Anti-DDoS</li>
+      </ul>
+      <div class="price">R$ 15,00 <span style="font-size:1rem;">/mês</span></div>
+      <a href="https://discord.gg/4apRHpBa">Comprar</a>
+    </div>
+
+    <!-- Prata -->
+    <div class="plan">
+      <h3>Prata</h3>
+      <p class="ram">2 GB RAM</p>
+      <ul>
+        <li>✅ 2 vCPU</li>
+        <li>✅ SSD NVMe</li>
+        <li>✅ Proteção Anti-DDoS</li>
+      </ul>
+      <div class="price">R$ 25,00 <span style="font-size:1rem;">/mês</span></div>
+      <a href="https://discord.gg/4apRHpBa">Comprar</a>
+    </div>
+
+    <!-- Ouro -->
+    <div class="plan" style="border:2px solid #21C25E; transform:scale(1.05);">
+      <h3>Ouro</h3>
+      <p class="ram">4 GB RAM</p>
+      <ul>
+        <li>✅ 4 vCPU</li>
+        <li>✅ SSD NVMe</li>
+        <li>✅ Suporte Prioritário</li>
+      </ul>
+      <div class="price">R$ 45,00 <span style="font-size:1rem;">/mês</span></div>
+      <a href="https://discord.gg/4apRHpBa">Comprar</a>
+    </div>
+
+    <!-- Platina -->
+    <div class="plan">
+      <h3>Platina</h3>
+      <p class="ram">8 GB RAM</p>
+      <ul>
+        <li>✅ 8 vCPU</li>
+        <li>✅ SSD NVMe</li>
+        <li>✅ Suporte VIP 24/7</li>
+      </ul>
+      <div class="price">R$ 80,00 <span style="font-size:1rem;">/mês</span></div>
+      <a href="https://discord.gg/4apRHpBa">Comprar</a>
+    </div>
+
+  </div>
+</section>
+
+<section id="faq">
+<h2 class="section-title">Perguntas Frequentes</h2>
+<div class="faq-item"><button class="faq-question">Vocês criam bots do zero?</button><div class="faq-answer">Sim, totalmente personalizados.</div></div>
+<div class="faq-item"><button class="faq-question">Os bots ficam online 24h?</button><div class="faq-answer">Sim, com hospedagem dedicada.</div></div>
+<div class="faq-item"><button class="faq-question">Como funciona o suporte?</button><div class="faq-answer">Pelo Discord durante o horário de atendimento.</div></div>
+</section>
+
+<section id="contato">
+<h2 class="section-title">Contato</h2>
+<div class="contact-box">
+<h3>AmericanPro</h3>
+<p>Atendimento todos os dias das 13h às 00h</p>
+<a href="https://discord.gg/4apRHpBa" target="_blank">Entrar no Discord</a>
+</div>
+</section>
+
+<footer>
+<p>© 2026 AmericanPro • Todos os direitos reservados</p>
+</footer>
+
+<a class="discord-float" href="https://discord.gg/4apRHpBa" target="_blank">Discord</a>
+
+<script>
+document.querySelectorAll(".faq-question").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const answer = btn.nextElementSibling;
+    if (answer.style.maxHeight) {
+      answer.style.maxHeight = null;
+    } else {
+      document.querySelectorAll(".faq-answer").forEach(a => a.style.maxHeight = null);
+      answer.style.maxHeight = answer.scrollHeight + "px";
+    }
+  });
+});
+</script>
+
 </body>
 </html>
