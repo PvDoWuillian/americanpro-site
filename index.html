@@ -30,11 +30,11 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"></noscript>
   
-  <!-- ===== FAVICON (Substitua pelos seus arquivos reais) ===== -->
+  <!-- ===== FAVICON ===== -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%2321C25E'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='60' font-weight='bold'>AP</text></svg>">
   <link rel="apple-touch-icon" href="https://i.postimg.cc/7LhfFNQ4/baner.png">
   
-  <!-- ===== JSON-LD SCHEMA.ORG (SEO Rico para Google) ===== -->
+  <!-- ===== JSON-LD SCHEMA.ORG ===== -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -47,7 +47,7 @@
     "priceRange": "R$ 15 - R$ 80",
     "currenciesAccepted": "BRL",
     "paymentAccepted": "PIX, Cartão, Cripto",
-    "contactPoint": {"@type": "ContactPoint", "contactType": "customer service", "availableLanguage": "Portuguese", "url": "https://discord.gg/4apRHpBa"},
+    "contactPoint": {"@type": "ContactPoint", "contactType": "customer service", "availableLanguage": "Portuguese", "url": "https://discord.gg/6AZPWcHYwm"},
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "Planos de Hospedagem",
@@ -61,20 +61,18 @@
   }
   </script>
 
-  <!-- ===== DESIGN SYSTEM & ESTILOS (TUDO AQUI) ===== -->
+  <!-- ===== DESIGN SYSTEM & ESTILOS ===== -->
   <style>
 /* ==========================================================================
-   1. DESIGN TOKENS (VARIÁVEIS CSS) - O CÉREBRO DO DESIGN
+   1. DESIGN TOKENS (VARIÁVEIS CSS)
    ========================================================================== */
 :root {
-  /* Cores - Dark Theme Default */
   --bg-deep: #070b12; --bg-card: #101722; --bg-elevated: #182030;
   --border: rgba(255,255,255,0.06); --border-hover: rgba(33,194,94,0.5); --border-focus: #21C25E;
   --brand: #21C25E; --brand-hover: #1a9a4b; --brand-light: rgba(33,194,94,0.15); --brand-glow: rgba(33,194,94,0.4);
   --discord: #5865F2; --discord-hover: #4752c4;
   --text: #ffffff; --text-sec: #b0b8c8; --text-muted: #6b7688; --text-on-brand: #05100a;
   
-  /* Tipografia Fluida (clamp = responsivo sem media query) */
   --ff: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --fw-l: 300; --fw-r: 400; --fw-m: 500; --fw-sb: 600; --fw-b: 700; --fw-eb: 800;
   --fs-xs: clamp(0.7rem, 0.65rem + 0.25vw, 0.8rem);
@@ -87,24 +85,19 @@
   --fs-4xl: clamp(2.5rem, 1.8rem + 3.5vw, 4rem);
   --lh-tight: 1.1; --lh-base: 1.6; --lh-rel: 1.75;
   
-  /* Espaçamento (Escala 4px) */
   --sp-1: .25rem; --sp-2: .5rem; --sp-3: .75rem; --sp-4: 1rem; --sp-5: 1.25rem;
   --sp-6: 1.5rem; --sp-8: 2rem; --sp-10: 2.5rem; --sp-12: 3rem; --sp-16: 4rem; --sp-20: 5rem;
   
-  /* Bordas, Sombras, Transições */
   --rad-sm: 6px; --rad-md: 10px; --rad-lg: 16px; --rad-xl: 24px; --rad-full: 9999px;
   --sh-sm: 0 1px 2px rgba(0,0,0,.3); --sh-md: 0 4px 12px rgba(0,0,0,.25);
   --sh-lg: 0 12px 28px rgba(0,0,0,.3); --sh-glow: 0 0 24px var(--brand-glow); --sh-glow-lg: 0 0 40px var(--brand-glow);
   --tr-fast: 150ms ease; --tr-base: 250ms ease; --tr-slow: 400ms ease; --tr-spring: 400ms cubic-bezier(.34,1.56,.64,1);
   
-  /* Layout */
   --container: 1200px; --pad: var(--sp-6); --header-h: 72px;
 }
 
-/* Light Mode (Preparado para futuro toggle) */
 @media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) { --bg-deep:#f8fafc; --bg-card:#fff; --bg-elevated:#f1f5f9; --border:#e2e8f0; --text:#0f172a; --text-sec:#475569; --text-muted:#94a3b8; --brand:#16a34a; --brand-hover:#15803d; --brand-light:#dcfce7; --sh-sm:0 1px 2px rgba(0,0,0,.05); --sh-md:0 4px 12px rgba(0,0,0,.08); --sh-lg:0 12px 28px rgba(0,0,0,.1); } }
 
-/* Acessibilidade: Reduzir Movimento */
 @media (prefers-reduced-motion: reduce) { :root { --tr-fast:0ms; --tr-base:0ms; --tr-slow:0ms; --tr-spring:0ms; } *, *::before, *::after { animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; scroll-behavior:auto!important; } }
 
 /* ==========================================================================
@@ -122,7 +115,6 @@ button { background: none; border: none; cursor: pointer; }
 :focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
 ::selection { background: var(--brand); color: var(--text-on-brand); }
 
-/* Utilitários */
 .visually-hidden { position: absolute!important; width: 1px!important; height: 1px!important; padding: 0!important; margin: -1px!important; overflow: hidden!important; clip: rect(0,0,0,0)!important; white-space: nowrap!important; border: 0!important; }
 .skip-link { position: absolute; top: -100%; left: 50%; transform: translateX(-50%); background: var(--brand); color: var(--text-on-brand); padding: var(--sp-3) var(--sp-6); border-radius: var(--rad-md); z-index: 9999; font-weight: var(--fw-sb); transition: top var(--tr-fast); }
 .skip-link:focus { top: var(--sp-4); }
@@ -132,7 +124,7 @@ button { background: none; border: none; cursor: pointer; }
 .text-center { text-align: center; }
 
 /* ==========================================================================
-   3. COMPONENTES: BOTÕES, BADGE, CARDS
+   3. COMPONENTES
    ========================================================================== */
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--sp-2); font-weight: var(--fw-sb); padding: var(--sp-3) var(--sp-6); border-radius: var(--rad-lg); border: 2px solid transparent; cursor: pointer; transition: all var(--tr-base); white-space: nowrap; position: relative; overflow: hidden; }
 .btn:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--brand-light), 0 0 0 4px var(--border-focus); }
@@ -156,7 +148,7 @@ button { background: none; border: none; cursor: pointer; }
 .card:hover { transform: translateY(-4px); border-color: var(--border-hover); box-shadow: var(--sh-lg); }
 
 /* ==========================================================================
-   4. HEADER & NAV (MOBILE FIRST + DRAWER)
+   4. HEADER & NAV
    ========================================================================== */
 .header { position: fixed; top: 0; left: 0; right: 0; height: var(--header-h); background: rgba(10,15,25,.9); backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid var(--border); z-index: 1000; transition: box-shadow var(--tr-base), background var(--tr-base); }
 .header.scrolled { box-shadow: var(--sh-md); background: rgba(10,15,25,.98); }
@@ -166,7 +158,6 @@ button { background: none; border: none; cursor: pointer; }
 .logo:hover .logo-icon { animation: pulse 1.5s var(--tr-spring) infinite; }
 @keyframes pulse { 50% { transform: scale(1.05); } }
 
-/* Nav Desktop */
 .nav-list { display: none; gap: var(--sp-8); }
 @media (min-width: 769px) { .nav-list { display: flex; } }
 .nav-link { color: var(--text-sec); font-weight: var(--fw-m); font-size: var(--fs-sm); position: relative; padding: var(--sp-2) 0; transition: color var(--tr-fast); }
@@ -174,7 +165,6 @@ button { background: none; border: none; cursor: pointer; }
 .nav-link:hover, .nav-link:focus-visible { color: var(--brand); }
 .nav-link:hover::after, .nav-link:focus-visible::after { width: 100%; }
 
-/* Mobile Hamburger */
 .hamburger { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--rad-md); padding: 0; z-index: 1001; }
 @media (min-width: 769px) { .hamburger { display: none; } }
 .hamburger-box { width: 24px; height: 16px; position: relative; }
@@ -186,7 +176,6 @@ button { background: none; border: none; cursor: pointer; }
 .hamburger[aria-expanded="true"] .hamburger-inner::before { transform: rotate(45deg) translate(5px, 6px); }
 .hamburger[aria-expanded="true"] .hamburger-inner::after { transform: rotate(-45deg) translate(5px, -6px); }
 
-/* Mobile Drawer & Overlay */
 .nav-drawer { position: fixed; top: 0; right: 0; bottom: 0; width: 85%; max-width: 320px; background: var(--bg-card); border-left: 1px solid var(--border); padding: calc(var(--header-h) + var(--sp-6)) var(--sp-6) var(--sp-6); transform: translateX(100%); transition: transform var(--tr-spring); box-shadow: var(--sh-lg); overflow-y: auto; z-index: 1000; visibility: hidden; }
 .nav-drawer.is-open { transform: translateX(0); visibility: visible; }
 .nav-drawer .nav-list { flex-direction: column; gap: 0; }
@@ -196,9 +185,8 @@ button { background: none; border: none; cursor: pointer; }
 .nav-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.6); backdrop-filter: blur(4px); opacity: 0; visibility: hidden; transition: opacity var(--tr-base), visibility var(--tr-base); z-index: 999; }
 .nav-overlay.is-visible { opacity: 1; visibility: visible; }
 
-/* Header Actions */
 .header-actions { display: flex; align-items: center; gap: var(--sp-4); }
-@media (max-width: 768px) { .header-actions .btn-span { display: none; } } /* Esconde texto "Discord" no mobile header */
+@media (max-width: 768px) { .header-actions .btn-span { display: none; } }
 
 /* ==========================================================================
    5. HERO
@@ -233,7 +221,7 @@ button { background: none; border: none; cursor: pointer; }
 @keyframes blob-float { 0%,100% { transform: translate(0,0) scale(1); } 25% { transform: translate(30px,-20px) scale(1.05); } 50% { transform: translate(-20px,30px) scale(.95); } 75% { transform: translate(10px,20px) scale(1.02); } }
 
 /* ==========================================================================
-   6. STATS (CONTADOR ANIMADO)
+   6. STATS
    ========================================================================== */
 .stats { background: linear-gradient(180deg, transparent, var(--bg-card), transparent); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--sp-4); }
@@ -262,7 +250,7 @@ button { background: none; border: none; cursor: pointer; }
 .service-desc { font-size: var(--fs-sm); color: var(--text-sec); line-height: var(--lh-rel); }
 
 /* ==========================================================================
-   8. PRICING (COM TOGGLE MENSAL/TRIMESTRAL/ANUAL)
+   8. PRICING
    ========================================================================== */
 .pricing-toggle { display: flex; align-items: center; justify-content: center; gap: var(--sp-3); margin-bottom: var(--sp-10); flex-wrap: wrap; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--rad-full); padding: var(--sp-2); max-width: 600px; margin-left: auto; margin-right: auto; }
 .pricing-toggle input { position: absolute; opacity: 0; pointer-events: none; }
@@ -294,7 +282,7 @@ button { background: none; border: none; cursor: pointer; }
 .pricing-note { text-align: center; margin-top: var(--sp-10); font-size: var(--fs-sm); color: var(--text-muted); line-height: var(--lh-rel); }
 
 /* ==========================================================================
-   9. FAQ (NATIVE DETAILS/SUMMARY - ACESSÍVEL)
+   9. FAQ
    ========================================================================== */
 .faq-grid { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: var(--sp-3); }
 .faq-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--rad-lg); overflow: hidden; transition: border-color var(--tr-base), box-shadow var(--tr-base); }
@@ -357,7 +345,7 @@ button { background: none; border: none; cursor: pointer; }
 }
 
 /* ==========================================================================
-   13. SCROLL REVEAL (ANIMAÇÃO ENTRADA)
+   13. SCROLL REVEAL
    ========================================================================== */
 [data-reveal] { opacity: 0; transform: translateY(30px); transition: opacity .6s ease, transform .6s ease; }
 [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
@@ -366,7 +354,6 @@ button { background: none; border: none; cursor: pointer; }
 [data-reveal="right"] { transform: translateX(40px); }
 [data-reveal="scale"] { transform: scale(.95); }
 [data-reveal="scale"].is-visible { transform: scale(1); }
-/* Delays via inline style: style="transition-delay: 100ms" */
 
   </style>
 </head>
@@ -375,7 +362,7 @@ button { background: none; border: none; cursor: pointer; }
 <!-- BG BLOBS -->
 <div class="bg-blobs" aria-hidden="true"><div class="blob blob-1"></div><div class="blob blob-2"></div></div>
 
-<!-- SKIP LINK (A11Y) -->
+<!-- SKIP LINK -->
 <a href="#main" class="skip-link">Pular para o conteúdo principal</a>
 
 <!-- ===== HEADER ===== -->
@@ -386,8 +373,7 @@ button { background: none; border: none; cursor: pointer; }
       <span class="logo-text">AmericanPro</span>
     </a>
 
-    <!-- NAV DESKTOP -->
-    <nav class="nav" role="navigation" aria-label="Navegação principal" aria-hidden="true" style="display:none;"> <!-- JS controla aria-hidden no desktop -->
+    <nav class="nav" role="navigation" aria-label="Navegação principal" aria-hidden="true" style="display:none;">
       <ul class="nav-list">
         <li><a href="#servicos" class="nav-link">Serviços</a></li>
         <li><a href="#planos" class="nav-link">Planos</a></li>
@@ -397,18 +383,16 @@ button { background: none; border: none; cursor: pointer; }
     </nav>
 
     <div class="header-actions">
-      <a href="https://discord.gg/4apRHpBa" target="_blank" rel="noopener noreferrer" class="btn btn-discord" aria-label="Entrar no Discord da AmericanPro">
+      <a href="https://discord.gg/6AZPWcHYwm" target="_blank" rel="noopener noreferrer" class="btn btn-discord" aria-label="Entrar no Discord da AmericanPro">
         <svg class="icon" aria-hidden="true"><use href="#discord-icon"></use></svg>
         <span class="btn-span">Discord</span>
       </a>
-      <!-- HAMBURGUER MOBILE -->
       <button class="hamburger" aria-expanded="false" aria-controls="mobile-nav" aria-label="Abrir menu de navegação" id="hamburger-btn">
         <span class="hamburger-box" aria-hidden="true"><span class="hamburger-inner"></span></span>
       </button>
     </div>
   </div>
 
-  <!-- MOBILE DRAWER (FORA DO HEADER INNER PARA POSITION FIXED FUNCIONAR BEM) -->
   <div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
   <nav class="nav-drawer" id="mobile-nav" role="navigation" aria-label="Menu mobile" aria-hidden="true">
     <ul class="nav-list">
@@ -431,14 +415,13 @@ button { background: none; border: none; cursor: pointer; }
         <h1 id="hero-title" class="hero-title">A solução completa para seu <span class="highlight">servidor Discord</span></h1>
         <p class="hero-subtitle">Criamos bots personalizados com sistemas de moderação, tickets, economia, música, verificação e integrações exclusivas. Tudo hospedado 24 horas por dia, 7 dias por semana.</p>
         <div class="hero-cta" role="group" aria-label="Ações principais">
-          <a href="https://discord.gg/4apRHpBa" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">Solicitar Orçamento</a>
+          <a href="https://discord.gg/6AZPWcHYwm" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">Solicitar Orçamento</a>
           <a href="#planos" class="btn btn-outline btn-lg">Ver Planos de Hospedagem</a>
         </div>
         <p class="hero-trust">Atendimento humanizado • 13h às 00h • Suporte via Discord</p>
       </div>
       <div class="hero-visual" aria-hidden="true">
         <div class="hero-illustration">
-          <!-- SUA IMAGEM DO BANNER AQUI -->
           <img src="https://i.postimg.cc/7LhfFNQ4/baner.png" alt="" loading="lazy" width="450" height="450">
         </div>
       </div>
@@ -486,7 +469,6 @@ button { background: none; border: none; cursor: pointer; }
         <p class="section-subtitle">Performance enterprise, preço acessível. Todos com SSD NVMe e Anti-DDoS.</p>
       </header>
       
-      <!-- TOGGLE PERÍODO -->
       <div class="pricing-toggle" role="group" aria-label="Ciclo de cobrança">
         <input type="radio" name="billing" id="monthly" value="monthly" checked>
         <label for="monthly">Mensal</label>
@@ -509,7 +491,7 @@ button { background: none; border: none; cursor: pointer; }
             <li><svg aria-hidden="true"><use href="#icon-check"></use></svg> Painel Pterodactyl</li>
             <li><svg aria-hidden="true"><use href="#icon-check"></use></svg> Backup Semanal</li>
           </ul>
-          <a href="https://discord.gg/4apRHpBa" target="_blank" rel="noopener" class="btn btn-outline btn-block plan-btn">Contratar</a>
+          <a href="https://discord.gg/6AZPWcHYwm" target="_blank" rel="noopener" class="btn btn-outline btn-block plan-btn">Contratar</a>
         </li>
 
         <!-- PRATA -->
@@ -524,7 +506,7 @@ button { background: none; border: none; cursor: pointer; }
             <li><svg aria-hidden="true"><use href="#icon-check"></use></svg> Backup Diário</li>
             <li><svg aria-hidden="true"><use href="#icon-check"></use></svg> Suporte Prioritário (Ticket)</li>
           </ul>
-          <a href="https://discord.gg/4apRHpBa" target="_blank" rel="noopener" class="btn btn-outline btn-block plan-btn">Contratar</a>
+          <a href="https://discord.gg/6AZPWcHYwm" target="_blank" rel="noopener" class="btn btn-outline btn-block plan-btn">Contratar</a>
         </li>
 
         <!-- OURO (DESTAQUE) -->
@@ -540,7 +522,7 @@ button { background: none; border: none; cursor: pointer; }
             <li><svg aria-hidden="true"><use href="#icon-check"></use></svg> Backup Diário + Snapshot</li>
             <li><svg aria-hidden="true"><use href="#icon-check"></use></svg> Suporte Prioritário (Chat Direto)</li>
           </ul>
-          <a href="https://discord.gg/4apRHpBa" target="_blank" rel="noopener" class="btn btn-primary btn-block plan-btn">Contratar</a>
+          <a href="https://discord.gg/6AZPWcHYwm" target="_blank" rel="noopener" class="btn btn-primary btn-block plan-btn">Contratar</a>
         </li>
 
         <!-- PLATINA -->
@@ -555,7 +537,7 @@ button { background: none; border: none; cursor: pointer; }
             <li><svg aria-hidden="true"><use href="#icon-check"></use></svg> Backup Horário + Offsite</li>
             <li><svg aria-hidden="true"><use href="#icon-check"></use></svg> Suporte VIP 24/7 (Gerente Dedicado)</li>
           </ul>
-          <a href="https://discord.gg/4apRHpBa" target="_blank" rel="noopener" class="btn btn-outline btn-block plan-btn">Contratar</a>
+          <a href="https://discord.gg/6AZPWcHYwm" target="_blank" rel="noopener" class="btn btn-outline btn-block plan-btn">Contratar</a>
         </li>
       </ul>
       <p class="pricing-note">Todos os planos incluem: IP Dedicado (opcional), Subdomínio grátis (seu-bot.americanpro.host), Migração grátis de outro host.</p>
@@ -567,7 +549,7 @@ button { background: none; border: none; cursor: pointer; }
     <div class="container">
       <header class="section-header">
         <h2 id="faq-title" class="section-title">Perguntas Frequentes</h2>
-        <p class="section-subtitle">Não encontrou sua resposta? <a href="https://discord.gg/4apRHpBa" target="_blank" rel="noopener">Chama no Discord</a>.</p>
+        <p class="section-subtitle">Não encontrou sua resposta? <a href="https://discord.gg/6AZPWcHYwm" target="_blank" rel="noopener">Chama no Discord</a>.</p>
       </header>
       <div class="faq-grid">
         <details class="faq-item" open><summary class="faq-question">Vocês criam bots do zero, personalizados?</summary><div class="faq-answer"><p>Sim! Esse é nosso core business. Você nos diz a ideia, nós arquitetamos, desenvolvemos (Node.js/discord.js ou Python/disnake), testamos, hospedamos e damos manutenção. Desde um bot simples de "bem-vindo" até sistemas complexos de economia, RPG, moderação com IA ou integrações com APIs externas (MercadoPago, Steam, Riot, etc).</p></div></details>
@@ -588,7 +570,7 @@ button { background: none; border: none; cursor: pointer; }
           <h2 id="contact-title" class="section-title">Pronto para começar?</h2>
           <p class="section-subtitle">Fale com a gente no Discord. Orçamento sem compromisso em minutos.</p>
         </header>
-        <a href="https://discord.gg/4apRHpBa" target="_blank" rel="noopener noreferrer" class="btn btn-discord btn-discord-large btn-xl">
+        <a href="https://discord.gg/6AZPWcHYwm" target="_blank" rel="noopener noreferrer" class="btn btn-discord btn-discord-large btn-xl">
           <svg class="icon" aria-hidden="true"><use href="#discord-icon"></use></svg>
           <span>Entrar no Discord &nbsp;→</span>
         </a>
@@ -606,14 +588,14 @@ button { background: none; border: none; cursor: pointer; }
       <a href="/" class="logo" aria-label="AmericanPro - Início"><svg class="logo-icon" aria-hidden="true"><use href="#logo-icon"></use></svg><span class="logo-text">AmericanPro</span></a>
       <p>Bots Discord personalizados & Hospedagem de alta performance. Feito por devs, para devs e donos de servidor.</p>
       <div class="social-links">
-        <a href="https://discord.gg/4apRHpBa" target="_blank" rel="noopener" aria-label="Discord"><svg><use href="#discord-icon"></use></svg></a>
+        <a href="https://discord.gg/6AZPWcHYwm" target="_blank" rel="noopener" aria-label="Discord"><svg><use href="#discord-icon"></use></svg></a>
         <a href="https://github.com" target="_blank" rel="noopener" aria-label="GitHub"><svg><use href="#github-icon"></use></svg></a>
         <a href="mailto:contato@americanpro.com.br" aria-label="E-mail"><svg><use href="#mail-icon"></use></svg></a>
       </div>
     </div>
     <nav class="footer-nav" aria-label="Serviços"><h4>Serviços</h4><ul><li><a href="#servicos">Bots Personalizados</a></li><li><a href="#planos">Hospedagem 24h</a></li><li><a href="#servicos">Moderação & Tickets</a></li><li><a href="#servicos">Economia & RPG</a></li></ul></nav>
     <nav class="footer-nav" aria-label="Empresa"><h4>Empresa</h4><ul><li><a href="#faq">FAQ</a></li><li><a href="#contato">Contato</a></li><li><a href="/termos">Termos de Uso</a></li><li><a href="/privacidade">Política de Privacidade</a></li></ul></nav>
-    <div class="footer-contact"><h4>Contato Rápido</h4><address><p><a href="https://discord.gg/4apRHpBa" target="_blank">Discord: americanpro</a></p><p><a href="mailto:contato@americanpro.com.br">contato@americanpro.com.br</a></p></address></div>
+    <div class="footer-contact"><h4>Contato Rápido</h4><address><p><a href="https://discord.gg/6AZPWcHYwm" target="_blank">Discord: americanpro</a></p><p><a href="mailto:contato@americanpro.com.br">contato@americanpro.com.br</a></p></address></div>
   </div>
   <div class="footer-bottom">
     <p>&copy; 2026 AmericanPro. Todos os direitos reservados. CNPJ: XX.XXX.XXX/0001-XX</p>
@@ -622,259 +604,12 @@ button { background: none; border: none; cursor: pointer; }
 </footer>
 
 <!-- DISCORD FLOAT MOBILE -->
-<a href="https://discord.gg/4apRHpBa" target="_blank" rel="noopener" class="discord-float" aria-label="Suporte via Discord">
+<a href="https://discord.gg/6AZPWcHYwm" target="_blank" rel="noopener" class="discord-float" aria-label="Suporte via Discord">
   <svg class="icon" aria-hidden="true"><use href="#discord-icon"></use></svg>
   <span>Suporte</span>
 </a>
 
-<!-- ===== SVG SPRITE (ÍCONES) ===== -->
+<!-- ===== SVG SPRITE ===== -->
 <svg style="display: none;" aria-hidden="true">
   <symbol id="logo-icon" viewBox="0 0 55 55"><rect width="55" height="55" rx="12" fill="#21C25E"/><text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" fill="white" font-weight="bold" font-size="24">AP</text></symbol>
-  <symbol id="discord-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.683 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.083.083 0 0 0 .031.057 19.9 19.9 0 0 0 5.994 6.027.077.077 0 0 0 .084-.028c.464-.636.908-1.353 1.179-1.995a.432.432 0 0 1 .472-.025c.16.098.323.19.488.288a.077.077 0 0 0 .083-.028 1.996 1.996 0 0 0 .364-1.173 18.68 18.68 0 0 0-.77-2.666.077.077 0 0 1 .009-.128 12.9 12.9 0 0 1 1.718-3.642.077.077 0 0 1 .127-.009c3.637 1.36 7.472 1.36 11.094 0a.077.077 0 0 1 .127.009c.442.355.827.756 1.17 1.192a.077.077 0 0 1 .009.128 14.07 14.07 0 0 1-.77 2.666.076.076 0 0 0 .032.125 1.84 1.84 0 0 1-.005.247.5.5 0 0 0 .19.378.074.074 0 0 0 .079-.037c.271-.642.715-1.36 1.178-1.995a19.8 19.8 0 0 0 6.002-6.027.077.077 0 0 0-.032-.054c.418-4.536-.42-9.097-3.548-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></symbol>
-  <symbol id="icon-check" viewBox="0 0 24 24"><path fill="currentColor" d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></symbol>
-  <symbol id="icon-bot" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></symbol>
-  <symbol id="icon-shield" viewBox="0 0 24 24"><path fill="currentColor" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
-  <symbol id="icon-ticket" viewBox="0 0 24 24"><path fill="currentColor" d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 7h-4v2h4v-2zm0 4h-4v2h4v-2z"/></symbol>
-  <symbol id="icon-coin" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="currentColor"/><path fill="#fff" d="M12 6v12M6 12h12"/></symbol> <!-- Simplificado -->
-  <symbol id="icon-music" viewBox="0 0 24 24"><path fill="currentColor" d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></symbol>
-  <symbol id="icon-verify" viewBox="0 0 24 24"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></symbol>
-  <symbol id="icon-api" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></symbol>
-  <symbol id="icon-server" viewBox="0 0 24 24"><path fill="currentColor" d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 18H6V4h12v16z"/></symbol>
-  <symbol id="github-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.37 1.23-3.21-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.28-1.56 3.285-1.23 3.285-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.21 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></symbol>
-  <symbol id="mail-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></symbol>
-</svg>
-
-<!-- ===== JAVASCRIPT (MODULE) ===== -->
-<script type="module">
-/* ==========================================================================
-   ESTADO & SELETORES
-   ========================================================================== */
-const $ = (sel, ctx = document) => ctx.querySelector(sel);
-const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
-
-const state = {
-  mobileNavOpen: false,
-  header: $('#header') || $('.header'), // fallback
-  hamburger: $('#hamburger-btn'),
-  mobileNav: $('#mobile-nav'),
-  navOverlay: $('#nav-overlay'),
-  desktopNav: $('header nav[aria-label="Navegação principal"]'),
-};
-
-/* ==========================================================================
-   1. MOBILE MENU (DRAWER + OVERLAY + TRAP FOCUS SIMPLES)
-   ========================================================================== */
-function initMobileMenu() {
-  const { hamburger, mobileNav, navOverlay, desktopNav } = state;
-  if (!hamburger || !mobileNav || !navOverlay) return;
-
-  const focusableSelector = 'a[href], button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])';
-  let lastFocusedElement = null;
-
-  const openMenu = () => {
-    lastFocusedElement = document.activeElement;
-    state.mobileNavOpen = true;
-    hamburger.setAttribute('aria-expanded', 'true');
-    mobileNav.classList.add('is-open');
-    mobileNav.setAttribute('aria-hidden', 'false');
-    navOverlay.classList.add('is-visible');
-    navOverlay.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-    // Desktop nav accessibility toggle
-    if (desktopNav) desktopNav.setAttribute('aria-hidden', 'true');
-    // Focus first link
-    setTimeout(() => mobileNav.querySelector(focusableSelector)?.focus(), 50);
-  };
-
-  const closeMenu = () => {
-    state.mobileNavOpen = false;
-    hamburger.setAttribute('aria-expanded', 'false');
-    mobileNav.classList.remove('is-open');
-    mobileNav.setAttribute('aria-hidden', 'true');
-    navOverlay.classList.remove('is-visible');
-    navOverlay.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-    if (desktopNav) desktopNav.setAttribute('aria-hidden', 'false');
-    lastFocusedElement?.focus();
-  };
-
-  const toggleMenu = () => state.mobileNavOpen ? closeMenu() : openMenu();
-
-  hamburger.addEventListener('click', toggleMenu);
-  navOverlay.addEventListener('click', closeMenu);
-
-  // Close on link click (inside drawer)
-  mobileNav.addEventListener('click', (e) => {
-    if (e.target.matches('a[href^="#"]')) closeMenu();
-  });
-
-  // ESC key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && state.mobileNavOpen) closeMenu();
-    // Tab trap (simple)
-    if (e.key === 'Tab' && state.mobileNavOpen) {
-      const focusable = mobileNav.querySelectorAll(focusableSelector);
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-    }
-  });
-
-  // Sync desktop nav aria-hidden on resize (optional but good)
-  const mq = window.matchMedia('(min-width: 769px)');
-  const handleWidthChange = (e) => {
-    if (desktopNav) desktopNav.setAttribute('aria-hidden', e.matches ? 'false' : 'true');
-    if (e.matches && state.mobileNavOpen) closeMenu(); // Auto close if resize to desktop
-  };
-  mq.addEventListener?.('change', handleWidthChange);
-  handleWidthChange(mq); // Initial
-}
-
-/* ==========================================================================
-   2. HEADER SCROLL SHADOW
-   ========================================================================== */
-function initHeaderScroll() {
-  const header = state.header;
-  if (!header) return;
-  let lastScroll = 0;
-  const onScroll = () => {
-    const y = window.scrollY;
-    header.classList.toggle('scrolled', y > 20);
-    lastScroll = y;
-  };
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll(); // Initial check
-}
-
-/* ==========================================================================
-   3. COUNTER ANIMATION (INTERSECTION OBSERVER)
-   ========================================================================== */
-function initCounters() {
-  const counters = $$('.counter[data-target]');
-  if (!counters.length) return;
-
-  const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const el = entry.target;
-        const target = +el.dataset.target;
-        const duration = 1800; // 1.8s
-        const startTime = performance.now();
-        
-        const animate = (now) => {
-          const progress = Math.min((now - startTime) / duration, 1);
-          // Easing: easeOutExpo
-          const eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
-          el.textContent = Math.floor(eased * target).toLocaleString('pt-BR');
-          if (progress < 1) requestAnimationFrame(animate);
-          else el.textContent = target.toLocaleString('pt-BR'); // Ensure exact final
-        };
-        requestAnimationFrame(animate);
-        obs.unobserve(el);
-      }
-    });
-  }, { threshold: 0.5, rootMargin: '0px 0px -50px 0px' });
-
-  counters.forEach(c => observer.observe(c));
-}
-
-/* ==========================================================================
-   4. PRICING TOGGLE (MENSAL / TRIMESTRAL / ANUAL)
-   ========================================================================== */
-function initPricingToggle() {
-  const radios = $$('.pricing-toggle input[name="billing"]');
-  const prices = $$('.price-value[data-monthly]');
-  if (!radios.length || !prices.length) return;
-
-  const update = (period) => {
-    prices.forEach(el => {
-      const val = el.dataset[period];
-      if (!val) return;
-      // Micro animação
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(4px)';
-      setTimeout(() => {
-        el.textContent = `R$ ${Number(val).toFixed(2).replace('.', ',')}`;
-        el.style.opacity = '1';
-        el.style.transform = 'translateY(0)';
-      }, 120);
-    });
-  };
-
-  radios.forEach(r => r.addEventListener('change', () => update(r.value)));
-}
-
-/* ==========================================================================
-   5. SCROLL REVEAL (INTERSECTION OBSERVER)
-   ========================================================================== */
-function initScrollReveal() {
-  // Respect prefers-reduced-motion via CSS (animations disabled there), but JS still adds class for layout stability
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const elements = $$('[data-reveal]');
-  if (!elements.length) return;
-
-  if (prefersReduced) {
-    elements.forEach(el => el.classList.add('is-visible'));
-    return;
-  }
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        // observer.unobserve(entry.target); // Uncomment to animate only once
-      } else {
-        // entry.target.classList.remove('is-visible'); // Uncomment to re-animate on scroll up
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-  elements.forEach(el => observer.observe(el));
-}
-
-/* ==========================================================================
-   6. SMOOTH SCROLL COM OFFSET DO HEADER (ÂNCORAS)
-   ========================================================================== */
-function initSmoothScroll() {
-  document.addEventListener('click', (e) => {
-    const link = e.target.closest('a[href^="#"]');
-    if (!link) return;
-    const href = link.getAttribute('href');
-    if (href === '#') return;
-    const target = document.querySelector(href);
-    if (target) {
-      e.preventDefault();
-      const headerHeight = state.header?.offsetHeight || 72;
-      const targetPos = target.getBoundingClientRect().top + window.scrollY - headerHeight - 16;
-      window.scrollTo({ top: targetPos, behavior: 'smooth' });
-      // Focus for accessibility
-      target.setAttribute('tabindex', '-1');
-      target.focus({ preventScroll: true });
-      target.removeAttribute('tabindex');
-      // Close mobile menu if open
-      if (state.mobileNavOpen) {
-        state.hamburger?.click(); // Triggers toggle logic
-      }
-    }
-  });
-}
-
-/* ==========================================================================
-   INIT ALL
-   ========================================================================== */
-document.addEventListener('DOMContentLoaded', () => {
-  initMobileMenu();
-  initHeaderScroll();
-  initCounters();
-  initPricingToggle();
-  initScrollReveal();
-  initSmoothScroll();
-  
-  // Console log para debug
-  console.log('%c🚀 AmericanPro Loaded', 'color: #21C25E; font-size: 1.2rem; font-weight: bold;');
-  console.log('%cSingle-file architecture | Mobile-first | Accessible | SEO Ready', 'color: #b0b8c8;');
-});
-</script>
-</body>
-</html>
+  <symbol id="discord-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.683 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.083.083 0 0 0 .031.057 19.9 19.9 0 0 0 5.994 6.027.077.077 0 0 0 .084-.028c.464-.636.908-1.353 1.179-1.995a.432.432 0 0 1 .472-.025c.16.098.323.19.488.288a.077.077 0 0 0 .083-.028 1.996 1.996 0 0 0 .364-1.173 18.68 18.68 0 0 0-.77-2.666.077.077 0 0 1 .009-.128 12.9 12.9 0 0 1 1.718-3.642.077.077 0 0 1 .127-.009c3.637 1.36 7.472 1.36 11.094 0a.077.
